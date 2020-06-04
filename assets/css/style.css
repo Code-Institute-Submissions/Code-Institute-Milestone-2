@@ -20,7 +20,7 @@ body{
     width: 180px;
     margin: 0 auto 0 auto;
     text-align: center;
-    border: 3px dotted pink;
+
 }
 
 .random-reel{
@@ -57,10 +57,11 @@ body{
 
 /*spin button*/
 
-.btn-spinreel button{
-    width: 100px;
-    height: 80px;
-    border-radius: 20%;
-    border: 1px green solid;
-    font-size: 5rem;
+#btn-spinreel button{
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px red solid;
+    font-size: 3rem;
 }
