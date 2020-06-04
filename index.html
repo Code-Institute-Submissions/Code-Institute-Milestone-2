@@ -10,11 +10,15 @@
 <body>
     <div class="container">
         <a href="#"><h1>Super Turbo Wheel Spinner Thing!</h1></a>
+        <div id="btn-spinreel">
+            <button id="spinBtn" type="button">Spin!</button>
+        </div>
+
         <div class="row">
             <div class="col-sm-4 reel-holder">
                 <div class="positioner">
                     <div id="reel1" class="random-reel">
-                        <div class="reels-container">
+                        <div id="reels-container1" class="reels-container">
                             <div>
                                 <img src="assets/images/astronaut.jpg" alt="">
                             </div>
@@ -50,11 +54,12 @@
                     </div>
                      
                 </div>
-            </div>
+            </div>          <!--end of reel1-->
+
             <div class="col-sm-4 reel-holder">
                 <div class="positioner">
                     <div id="reel2" class="random-reel">
-                        <div class="reels-container">
+                        <div id="reels-container2" class="reels-container">
                             <div>
                                 <img src="assets/images/astronaut.jpg" alt="">
                             </div>
@@ -89,11 +94,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>          <!--end of reel2-->
+
             <div class="col-sm-4 reel-holder">
                 <div class="positioner">
                     <div id="reel3" class="random-reel">
-                        <div class="reels-container">
+                        <div id="reels-container3" class="reels-container">
                             <div>
                                 <img src="assets/images/astronaut.jpg" alt="">
                             </div>
@@ -128,9 +134,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>          <!--end of reel3-->
+
         </div>
+
+        
     </div>
     
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>

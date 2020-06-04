@@ -2,6 +2,8 @@ body{
     
 }
 
+/*reels*/
+
 .container{
     text-align: center;
 }
@@ -24,6 +26,7 @@ body{
 .random-reel{
     width: 130px;
     height: 130px;
+    overflow: hidden;
     /*border: 2px dotted green;*/
 }
 
@@ -42,10 +45,6 @@ body{
     transform: matrix(1, 0, 0, 1, 0, -400);
 }
 
-.reel1, .reel2, .reel3{
-    overflow: hidden;
-
-}
 
 .reels-container{
     
@@ -54,4 +53,14 @@ body{
 .reels-container img{
     height: 100%;
     width: 100%;
+}
+
+/*spin button*/
+
+.btn-spinreel button{
+    width: 100px;
+    height: 80px;
+    border-radius: 20%;
+    border: 1px green solid;
+    font-size: 5rem;
 }
