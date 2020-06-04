@@ -1,0 +1,57 @@
+body{
+    
+}
+
+.container{
+    text-align: center;
+}
+
+.reel-holder{
+    position: relative;
+    border: 1px solid black;
+}
+
+.positioner{
+    padding: 30px;
+    border-radius: 20%;
+    height: 180px;
+    width: 180px;
+    margin: 0 auto 0 auto;
+    text-align: center;
+    border: 3px dotted pink;
+}
+
+.random-reel{
+    width: 130px;
+    height: 130px;
+    /*border: 2px dotted green;*/
+}
+
+.reel1{
+    transition: all 1s ease-in-out 0s;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.reel2{
+    transition: all 1s ease-in-out 0s;
+    transform: matrix(1, 0, 0, 1, 0, -300);
+}
+
+.reel3{
+    transition: all 1s ease-in-out 0s;
+    transform: matrix(1, 0, 0, 1, 0, -400);
+}
+
+.reel1, .reel2, .reel3{
+    overflow: hidden;
+
+}
+
+.reels-container{
+    
+}
+
+.reels-container img{
+    height: 100%;
+    width: 100%;
+}
