@@ -31,24 +31,18 @@ body{
 }
 
 .reel1{
-    transition: all 1s ease-in-out 0s;
-    transform: matrix(1, 0, 0, 1, 0, 0);
+    
 }
 
 .reel2{
-    transition: all 1s ease-in-out 0s;
-    transform: matrix(1, 0, 0, 1, 0, -300);
+
 }
 
 .reel3{
-    transition: all 1s ease-in-out 0s;
-    transform: matrix(1, 0, 0, 1, 0, -400);
+
 }
 
 
-.reels-container{
-    
-}
 
 .reels-container img{
     height: 100%;
