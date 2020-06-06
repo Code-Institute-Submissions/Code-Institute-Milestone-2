@@ -1,25 +1,41 @@
-body{
-    
+.top-container{
+    text-align: center;
+    margin: 30px auto 40px auto;
 }
 
 /*reels*/
 
-.container{
+.main-reel-container{
+    background-color: lightpink;
+    margin: auto;
+    max-width: 800px;
     text-align: center;
-}
-
-.reel-holder{
-    position: relative;
     border: 1px solid black;
 }
 
+#reels-holder{
+    border: 1px dotted green;
+    max-width: 800px;
+    position: relative;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reel-holder{
+    margin: 0 auto 0 auto;
+    position: relative;
+}
+
 .positioner{
+    background-color: white;
     padding: 30px;
     border-radius: 20%;
     height: 180px;
     width: 180px;
     margin: 0 auto 0 auto;
     text-align: center;
+    border: 2px solid lightgray;
 
 }
 
@@ -50,6 +66,10 @@ body{
 }
 
 /*spin button*/
+
+#btn-spinreel{
+    margin-top: 50px;
+}
 
 #btn-spinreel button{
     background-color: white;

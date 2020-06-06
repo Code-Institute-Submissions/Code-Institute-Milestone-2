@@ -44,5 +44,20 @@ $(document).ready(function(){
             imgsA[j] = imgsBi;
         }
         $("#reels-container3").append(imgsA);
+
+
+        /*fourth reel*/
+        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
+        $("#reels-container4").animate({marginTop: "0"}, 200);
+
+        var imgsA = $("#reels-container4 > div").remove().toArray();
+        for (var i = imgsA.length - 1; i >= 1; i--) {
+            var j = Math.floor(Math.random() * (i+1));
+            var imgsBi = imgsA[i];
+            var imgsBj = imgsA[j];
+            imgsA[i] = imgsBj;
+            imgsA[j] = imgsBi;
+        }
+        $("#reels-container4").append(imgsA);
     });
 });
