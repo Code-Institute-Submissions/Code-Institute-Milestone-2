@@ -3,23 +3,45 @@
     margin: 30px auto 40px auto;
 }
 
+#left-of-main{
+    margin: 0 auto 0 auto;
+    width: 20px;
+    height: 400px;
+    border: 1px solid green;
+}
+
+#right-of-main{
+    margin: 0 auto 0 auto;
+    width: 20px;
+    height: 400px;
+    border: 1px solid green;
+}
+
+.main-container-holder{
+    margin: 0 auto 0 auto;
+    display: flex;
+    max-width: 900px;
+}
+
 /*reels*/
 
-.main-reel-container{
-    background-color: lightpink;
+#center-of-main{
+    background-color: lightgrey;
+    border-radius: 10px;
     margin: auto;
     max-width: 800px;
     text-align: center;
-    border: 1px solid black;
+    border: 3px solid pink;
 }
 
 #reels-holder{
-    border: 1px dotted green;
+    background-color: lightcoral;
     max-width: 800px;
     position: relative;
     display: flex;
     margin-left: auto;
     margin-right: auto;
+    padding: 10px 0 20px 0;
 }
 
 .reel-holder{
@@ -29,21 +51,20 @@
 
 .positioner{
     background-color: white;
-    padding: 30px;
+    padding: 10px;
     border-radius: 20%;
     height: 180px;
-    width: 180px;
+    width: 150px;
     margin: 0 auto 0 auto;
     text-align: center;
-    border: 2px solid lightgray;
+    border: 2px solid darkgray;
 
 }
 
 .random-reel{
     width: 130px;
-    height: 130px;
+    height: 140px;
     overflow: hidden;
-    /*border: 2px dotted green;*/
 }
 
 .reel1{
@@ -65,16 +86,26 @@
     width: 100%;
 }
 
+.seperator{
+    border-radius: 50px;
+    margin: 10px auto 10px auto;
+    background-color: grey;
+    border: 1px solid darkgrey;
+    width: 80%;
+    height: 30px;
+}
+
 /*spin button*/
 
 #btn-spinreel{
+    height: 400px;
     margin-top: 50px;
 }
 
 #btn-spinreel button{
     background-color: white;
-    width: 200px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 5px red solid;
     font-size: 3rem;
