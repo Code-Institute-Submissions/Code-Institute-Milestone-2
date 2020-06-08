@@ -82,7 +82,7 @@ $(document).ready(function(){
         $("#reels-container4").animate({marginTop: "0"}, 200);
         $("#reels-container4").animate({marginTop: "-=10px"}, 200);
         $("#reels-container4").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container4").animate({marginTop: "0px"}, 200);
+        $("#reels-container4").animate({marginTop: "0px"}, 200,);
 
         var imgsA = $("#reels-container4 > div").remove().toArray();
         for (var i = imgsA.length - 1; i >= 1; i--) {
@@ -96,11 +96,21 @@ $(document).ready(function(){
         var reels4_div = document.getElementById("reels-container4").firstElementChild.innerHTML.split("/")[2];
         var reel4_remove = reels4_div.replace('.jpg">',"");
 
+       
+
         console.log(reel1_remove);
         console.log(reel2_remove);
         console.log(reel3_remove);
         console.log(reel4_remove);
+
+        
+        function checkReels(reel1_r, reel2_r, reel3_r, reel4_r){
+                if (reel1_r == reel2_r || reel1_r == reel3_r || reel1_remove == reel4_r){
+                    alert("YOU WIN!");
+                }
+            
+        };
     });
 
-    
+
 });
