@@ -17,7 +17,9 @@ $(document).ready(function(){
             imgsA[j] = imgsBi;
         }
         $("#reels-container1").append(imgsA);
-        var reels1_div = document.getElementById("reels-container1");
+        var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
+        var reel1_remove = reels1_div.replace('.jpg">',"");
+        
 
 
 
@@ -39,7 +41,8 @@ $(document).ready(function(){
             imgsA[j] = imgsBi;
         }
         $("#reels-container2").append(imgsA);
-        var reels2_div = document.getElementById("reels-container2");
+        var reels2_div = document.getElementById("reels-container2").firstElementChild.innerHTML.split("/")[2];
+        var reel2_remove = reels2_div.replace('.jpg">',"");
 
 
 
@@ -63,7 +66,8 @@ $(document).ready(function(){
             imgsA[j] = imgsBi;
         }
         $("#reels-container3").append(imgsA);
-        var reels3_div = document.getElementById("reels-container3");
+        var reels3_div = document.getElementById("reels-container3").firstElementChild.innerHTML.split("/")[2];
+        var reel3_remove = reels3_div.replace('.jpg">',"");
 
 
 
@@ -89,11 +93,14 @@ $(document).ready(function(){
             imgsA[j] = imgsBi;
         }
         $("#reels-container4").append(imgsA);
-        var reels4_div = document.getElementById("reels-container4");
+        var reels4_div = document.getElementById("reels-container4").firstElementChild.innerHTML.split("/")[2];
+        var reel4_remove = reels4_div.replace('.jpg">',"");
 
-        console.log(reels1_div);
-        console.log(reels2_div);
-        console.log(reels3_div);
-        console.log(reels4_div);
+        console.log(reel1_remove);
+        console.log(reel2_remove);
+        console.log(reel3_remove);
+        console.log(reel4_remove);
     });
+
+    
 });
