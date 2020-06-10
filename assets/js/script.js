@@ -1,27 +1,56 @@
 $(document).ready(function(){
 
     var cash = 100;
-    var betAmount;
+    var win;
+    var totalWon = 0;
+    var amountWon = 0;
+    var betAmount = 0;
+    var winnerTimeout;
+    var btn1;
+    var btn5;
+    var btn10;
 
     $("#spinBtn1").click(function() {
         cash -= 1;
         betAmount = 1;
         document.getElementById("credits").innerHTML = cash;
+        btn1 = true;
         runGame();
+        /*if (win == true){
+            totalWon += 1;
+            amountWon += 1;
+            cash += amountWon;
+            win = false;
+        }*/
     });
 
     $("#spinBtn5").click(function() {
         cash -= 5;
         betAmount = 5;
         document.getElementById("credits").innerHTML = cash;
+        btn5 = true;
         runGame();
+        /*if (win == true){
+            totalWon += 5;
+            amountWon += 5;
+            cash += amountWon;
+            win = false;
+            totalWon = 0;
+        }*/
     });
 
     $("#spinBtn10").click(function() {
         cash -= 10;
         betAmount = 10;
         document.getElementById("credits").innerHTML = cash;
+        btn10 = true;
         runGame();
+        /*if (win == true){
+            amountWon += 10;
+            cash += amountWon;
+            win = false;
+            totalWon = 0;
+        }*/
     });
     
 
@@ -129,40 +158,57 @@ $(document).ready(function(){
 
         checkReels(r1_remove, r2_remove, r3_remove, r4_remove);
         
-        
-        console.log(r1_remove);
-        console.log(r2_remove);
-        console.log(r3_remove);
-        console.log(r4_remove);
+        console.log(amountWon);
+        console.log(totalWon);
+        console.log(win);
+        console.log(cash);
 
 
-    }; //end of click function
+    }; //end of runGame Function
 
 
-        
-   
+    //delay html "winner!"
+    function winner(){
+        win = true;
+        if (btn1 == true){
+            totalWon += 1;
+            amountWon = 1;
+            cash += amountWon;
+            amountWon = 0;
+            btn1 = false;
+        }
+        if (btn5 == true){
+            totalWon += 5;
+            amountWon = 5;
+            cash += amountWon;
+            amountWon = 0;
+            btn5 = false;
+        }
+        if (btn10 == true){
+            totalWon += 10;
+            amountWon = 10;
+            cash += amountWon;
+            amountWon = 0;
+            btn10 = false;
+        }
+        winnerTimeout = setTimeout(function(){
+           $("#seperator").html("Winner!!");
+           $("#credits").html(cash);
+          } , 2000);
+   }
         
 
    
     //check for winner
-    function checkReels(reel1_r, reel2_r, reel3_r, reel4_r){
-            if (reel1_r == reel2_r || reel1_r == reel3_r || reel1_r == reel4_r){
-                document.getElementById("seperator").innerHTML = "Winner!!!";
-
+    function checkReels(reel1_r, reel2_r, reel3_r, reel4_r) {
+            if (   reel1_r == reel2_r || reel1_r == reel3_r || reel1_r ==           reel4_r
+                || reel2_r == reel1_r || reel2_r == reel3_r || reel2_r == reel4_r
+                || reel3_r == reel1_r || reel3_r == reel2_r || reel3_r == reel4_r
+                || reel4_r == reel1_r || reel4_r == reel2_r || reel4_r == reel3_r){
+                winner();
             }
-            else if (reel2_r == reel1_r || reel2_r == reel3_r || reel2_r == reel4_r){
-                document.getElementById("seperator").innerHTML = "Winner!!!";
-
-            }
-            else if (reel3_r == reel1_r || reel3_r == reel2_r || reel3_r == reel4_r){
-                document.getElementById("seperator").innerHTML = "Winner!!!";
-
-            }
-            else if (reel4_r == reel1_r || reel4_r == reel2_r || reel4_r == reel3_r){
-                document.getElementById("seperator").innerHTML = "Winner!!!";
-
-            }
-    };
+            
+    };// end of checkReels function
 
 }); //end of document.ready
 
