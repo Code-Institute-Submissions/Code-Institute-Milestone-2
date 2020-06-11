@@ -156,6 +156,8 @@ $(document).ready(function(){
         var reels4_div = document.getElementById("reels-container4").firstElementChild.innerHTML.split("/")[2];
         var r4_remove = reels4_div.replace('.jpg">',"");
 
+
+        //send strings to function with ".jpg" removed
         checkReels(r1_remove, r2_remove, r3_remove, r4_remove);
         
         console.log(amountWon);
@@ -167,46 +169,228 @@ $(document).ready(function(){
     }; //end of runGame Function
 
 
-    //delay html "winner!"
-    function winner(){
+    //match 2 icons function
+    function winner2match(){
         win = true;
         if (btn1 == true){
             totalWon += 1;
-            amountWon = 1;
+            amountWon = 2;
             cash += amountWon;
             amountWon = 0;
             btn1 = false;
         }
         if (btn5 == true){
             totalWon += 5;
-            amountWon = 5;
+            amountWon = 6;
             cash += amountWon;
             amountWon = 0;
             btn5 = false;
         }
         if (btn10 == true){
             totalWon += 10;
-            amountWon = 10;
+            amountWon = 12;
             cash += amountWon;
             amountWon = 0;
             btn10 = false;
         }
+
+        //delay html "Double Match!!"
         winnerTimeout = setTimeout(function(){
-           $("#seperator").html("Winner!!");
+           $("#seperator").html("Double Match!!");
+           $("#credits").html(cash);
+          } , 2000);
+   }
+
+   //match 3 icons function
+    function winner3match(){
+        win = true;
+        if (btn1 == true){
+            totalWon += 1;
+            amountWon = 4;
+            cash += amountWon;
+            amountWon = 0;
+            btn1 = false;
+        }
+        if (btn5 == true){
+            totalWon += 5;
+            amountWon = 11;
+            cash += amountWon;
+            amountWon = 0;
+            btn5 = false;
+        }
+        if (btn10 == true){
+            totalWon += 10;
+            amountWon = 22;
+            cash += amountWon;
+            amountWon = 0;
+            btn10 = false;
+        }
+
+        //delay html "TRIPLE Match!!"
+        winnerTimeout = setTimeout(function(){
+           $("#seperator").html("TRIPLE Match!!");
+           $("#credits").html(cash);
+          } , 2000);
+   }
+
+    //match all icons function
+    function winnerAllmatch(){
+        win = true;
+        if (btn1 == true){
+            totalWon += 1;
+            amountWon = cash * 10;
+            cash += amountWon;
+            amountWon = 0;
+            btn1 = false;
+        }
+        if (btn5 == true){
+            totalWon += 5;
+            amountWon = cash * 20;
+            cash += amountWon;
+            amountWon = 0;
+            btn5 = false;
+        }
+        if (btn10 == true){
+            totalWon += 10;
+            amountWon = cash * 50;
+            cash += amountWon;
+            amountWon = 0;
+            btn10 = false;
+        }
+
+        //delay html
+        winnerTimeout = setTimeout(function(){
+           $("#seperator").html("**ULTIMATE JACKPOT!!**");
            $("#credits").html(cash);
           } , 2000);
    }
         
 
    
-    //check for winner
+    //use strings (img names) to check for winner
     function checkReels(reel1_r, reel2_r, reel3_r, reel4_r) {
-            if (   reel1_r == reel2_r || reel1_r == reel3_r || reel1_r ==           reel4_r
-                || reel2_r == reel1_r || reel2_r == reel3_r || reel2_r == reel4_r
-                || reel3_r == reel1_r || reel3_r == reel2_r || reel3_r == reel4_r
-                || reel4_r == reel1_r || reel4_r == reel2_r || reel4_r == reel3_r){
-                winner();
-            }
+        var oneMatch;
+        
+        //----------------------------TWO MATCH ON REELS---------------------
+        //reel 1, two match
+        if (reel1_r == reel2_r && reel1_r !== reel3_r && reel1_r !== reel4_r){
+            oneMatch = true;
+            winner2match();
+        }
+        if (reel1_r == reel3_r && reel1_r !== reel2_r && reel1_r !== reel4_r){
+            oneMatch = true;
+            winner2match();
+        }
+        if (reel1_r == reel4_r && reel1_r !== reel2_r && reel1_r !== reel3_r){
+            oneMatch = true;
+            winner2match();
+        }
+
+        //reel 2, two match
+        if (reel2_r == reel1_r && reel2_r !== reel3_r && reel2_r !== reel4_r){
+            oneMatch = true;
+            winner2match();
+        }
+        if (reel2_r == reel3_r && reel2_r !== reel1_r && reel1_r !== reel4_r){
+            oneMatch = true;
+            winner2match();
+        }
+        if (reel2_r == reel4_r && reel2_r !== reel1_r && reel1_r !== reel3_r){
+            oneMatch = true;
+            winner2match();
+        }
+
+        //reel 3, two match
+        if (reel3_r == reel1_r && reel3_r !== reel2_r && reel3_r !== reel4_r){
+            oneMatch = true;
+            winner2match();
+        }
+        if (reel3_r == reel2_r && reel3_r !== reel1_r && reel3_r !== reel4_r){
+            oneMatch = true;
+            winner2match();
+        }
+        if (reel3_r == reel4_r && reel3_r !== reel1_r && reel3_r !== reel2_r){
+            oneMatch = true;
+            winner2match();
+        }
+
+        //reel 4, two match
+        if (reel4_r == reel1_r && reel4_r !== reel2_r && reel4_r !== reel3_r){
+            oneMatch = true;
+            winner2match();
+        }
+        if (reel4_r == reel2_r && reel4_r !== reel1_r && reel4_r !== reel3_r){
+            oneMatch = true;
+            winner2match();
+        }
+        if (reel4_r == reel3_r && reel4_r !== reel1_r && reel4_r !== reel3_r){
+            oneMatch = true;
+            winner2match();
+        }
+
+
+        //----------------------------THREE MATCH ON REELS---------------------
+        //reel 1, three match
+        if (reel1_r == reel2_r && reel1_r == reel3_r && reel1_r !== reel4_r){
+            twoMatch = true;
+            winner3match();
+        }
+        if (reel1_r == reel2_r && reel1_r == reel4_r && reel1_r !== reel3_r){
+            oneMatch = true;
+            winner3match();
+        }
+        if (reel1_r == reel3_r && reel1_r == reel4_r && reel1_r !== reel2_r){
+            oneMatch = true;
+            winner3match();
+        }
+
+        //reel 2, three match
+        if (reel2_r == reel1_r && reel2_r == reel3_r && reel2_r !== reel4_r){
+            twoMatch = true;
+            winner3match();
+        }
+        if (reel2_r == reel1_r && reel2_r == reel4_r && reel2_r !== reel3_r){
+            oneMatch = true;
+            winner3match();
+        }
+        if (reel2_r == reel3_r && reel2_r == reel4_r && reel2_r !== reel1_r){
+            oneMatch = true;
+            winner3match();
+        }
+
+        //reel 3, three match
+        if (reel3_r == reel1_r && reel3_r == reel2_r && reel3_r !== reel4_r){
+            twoMatch = true;
+            winner3match();
+        }
+        if (reel3_r == reel1_r && reel3_r == reel4_r && reel3_r !== reel2_r){
+            oneMatch = true;
+            winner3match();
+        }
+        if (reel3_r == reel2_r && reel3_r == reel4_r && reel3_r !== reel1_r){
+            oneMatch = true;
+            winner3match();
+        }
+
+        //reel 4, three match
+        if (reel4_r == reel1_r && reel4_r == reel2_r && reel4_r !== reel3_r){
+            twoMatch = true;
+            winner3match();
+        }
+        if (reel4_r == reel1_r && reel4_r == reel3_r && reel4_r !== reel2_r){
+            oneMatch = true;
+            winner3match();
+        }
+        if (reel4_r == reel2_r && reel4_r == reel3_r && reel4_r !== reel1_r){
+            oneMatch = true;
+            winner3match();
+        }
+
+        //----------------------------FOUR MATCH ON REELS---------------------
+        if (reel1_r == reel2_r && reel1_r == reel3_r && reel1_r == reel4_r){
+            winnerAllmatch();
+        }
+
             
     };// end of checkReels function
 
