@@ -16,12 +16,6 @@ $(document).ready(function(){
         document.getElementById("credits").innerHTML = cash;
         btn1 = true;
         runGame();
-        /*if (win == true){
-            totalWon += 1;
-            amountWon += 1;
-            cash += amountWon;
-            win = false;
-        }*/
     });
 
     $("#spinBtn5").click(function() {
@@ -30,13 +24,6 @@ $(document).ready(function(){
         document.getElementById("credits").innerHTML = cash;
         btn5 = true;
         runGame();
-        /*if (win == true){
-            totalWon += 5;
-            amountWon += 5;
-            cash += amountWon;
-            win = false;
-            totalWon = 0;
-        }*/
     });
 
     $("#spinBtn10").click(function() {
@@ -45,12 +32,6 @@ $(document).ready(function(){
         document.getElementById("credits").innerHTML = cash;
         btn10 = true;
         runGame();
-        /*if (win == true){
-            amountWon += 10;
-            cash += amountWon;
-            win = false;
-            totalWon = 0;
-        }*/
     });
     
 
@@ -160,10 +141,7 @@ $(document).ready(function(){
         //send strings to function with ".jpg" removed
         checkReels(r1_remove, r2_remove, r3_remove, r4_remove);
         
-        console.log(amountWon);
-        console.log(totalWon);
-        console.log(win);
-        console.log(cash);
+
 
 
     }; //end of runGame Function
@@ -194,11 +172,40 @@ $(document).ready(function(){
             btn10 = false;
         }
 
-        //delay html "Double Match!!"
+        //delay inner html
         winnerTimeout = setTimeout(function(){
            $("#seperator").html("Double Match!!");
            $("#credits").html(cash);
-          } , 2000);
+
+            var lights = document.querySelectorAll('.leftLights')
+            var count = 0;
+
+            for (var i=0; i < lights.length; i++){
+                $(lights[i]).addClass('on');
+            }
+                
+                
+
+        } , 2000);
+
+            /*var lights = document.querySelectorAll('.leftLights'),
+                timer = 500;
+                counter = 0;
+            var start = setTimeout(function(){
+                winLights();
+            }, 500);
+
+            function winLights(){
+                for (var i=0; i < lights.length; i++){
+                    lights[i].classlist.remove('on');
+                }
+                lights[counter].classlist.add('on');
+                setTimeout(winLights, timer);
+                counter = (counter + 1) % 12;
+            }*/
+
+        
+        
    }
 
    //match 3 icons function
@@ -226,7 +233,7 @@ $(document).ready(function(){
             btn10 = false;
         }
 
-        //delay html "TRIPLE Match!!"
+        //delay inner html 
         winnerTimeout = setTimeout(function(){
            $("#seperator").html("TRIPLE Match!!");
            $("#credits").html(cash);
@@ -258,7 +265,7 @@ $(document).ready(function(){
             btn10 = false;
         }
 
-        //delay html
+        //delay inner html
         winnerTimeout = setTimeout(function(){
            $("#seperator").html("**ULTIMATE JACKPOT!!**");
            $("#credits").html(cash);
