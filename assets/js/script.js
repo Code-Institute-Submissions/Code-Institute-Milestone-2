@@ -9,6 +9,8 @@ $(document).ready(function(){
     var btn1;
     var btn5;
     var btn10;
+    var lightCountOn = 0; //flash side lights on win
+
 
     $("#spinBtn1").click(function() {
         cash -= 1;
@@ -36,6 +38,7 @@ $(document).ready(function(){
     
 
     function runGame() {
+        lightCountOn = 0;
 
         //clear result box
         document.getElementById("seperator").innerHTML = ""; 
@@ -177,36 +180,36 @@ $(document).ready(function(){
            $("#seperator").html("Double Match!!");
            $("#credits").html(cash);
 
-            var lights = document.querySelectorAll('.leftLights')
-            var count = 0;
-
-            for (var i=0; i < lights.length; i++){
-                $(lights[i]).addClass('on');
-            }
-                
-                
-
+            lightLoopOn(); //flash lights on win
         } , 2000);
+    }
 
-            /*var lights = document.querySelectorAll('.leftLights'),
-                timer = 500;
-                counter = 0;
-            var start = setTimeout(function(){
-                winLights();
-            }, 500);
+   
 
-            function winLights(){
+
+    function lightLoopOn(){
+        setTimeout(function(){
+            var lights = document.querySelectorAll('.sideLights');
+            lightCountOn++;
+            if (lightCountOn < 8){
                 for (var i=0; i < lights.length; i++){
-                    lights[i].classlist.remove('on');
+                    $(lights[i]).addClass('on');
                 }
-                lights[counter].classlist.add('on');
-                setTimeout(winLights, timer);
-                counter = (counter + 1) % 12;
-            }*/
+                lightLoopOn();
+                lightLoopOff();
+            }
+        }, 500);
+    }
 
-        
-        
-   }
+    function lightLoopOff(){
+        setTimeout(function(){
+            var lights = document.querySelectorAll('.sideLights')
+            for (var i=0; i < lights.length; i++){
+                $(lights[i]).removeClass('on');
+            }
+        }, 150);
+    }
+    
 
    //match 3 icons function
     function winner3match(){
