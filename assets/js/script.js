@@ -154,22 +154,22 @@ $(document).ready(function(){
     function winner2match(){
         win = true;
         if (btn1 == true){
-            totalWon += 1;
-            amountWon = 2;
+            totalWon += 3;
+            amountWon = 3;
             cash += amountWon;
             amountWon = 0;
             btn1 = false;
         }
         if (btn5 == true){
-            totalWon += 5;
-            amountWon = 6;
+            totalWon += 8;
+            amountWon = 8;
             cash += amountWon;
             amountWon = 0;
             btn5 = false;
         }
         if (btn10 == true){
-            totalWon += 10;
-            amountWon = 12;
+            totalWon += 15;
+            amountWon = 15;
             cash += amountWon;
             amountWon = 0;
             btn10 = false;
@@ -179,14 +179,82 @@ $(document).ready(function(){
         winnerTimeout = setTimeout(function(){
            $("#seperator").html("Double Match!!");
            $("#credits").html(cash);
+           $("#totalWonCredit").html(totalWon);
 
             lightLoopOn(); //flash lights on win
         } , 2000);
     }
 
    
+   //match 3 icons function
+    function winner3match(){
+        win = true;
+        if (btn1 == true){
+            totalWon += 8;
+            amountWon = 8;
+            cash += amountWon;
+            amountWon = 0;
+            btn1 = false;
+        }
+        if (btn5 == true){
+            totalWon += 15;
+            amountWon = 15;
+            cash += amountWon;
+            amountWon = 0;
+            btn5 = false;
+        }
+        if (btn10 == true){
+            totalWon += 35;
+            amountWon = 35;
+            cash += amountWon;
+            amountWon = 0;
+            btn10 = false;
+        }
 
+        //delay inner html 
+        winnerTimeout = setTimeout(function(){
+           $("#seperator").html("TRIPLE Match!!");
+           $("#credits").html(cash);
+           $("#totalWonCredit").html(totalWon);
+            lightLoopOn(); //flash lights on win
+        } , 2000);
+   }
 
+    //match all icons function
+    function winnerAllmatch(){
+        win = true;
+        if (btn1 == true){
+            amountWon = cash * 3;
+            totalWon += amountWon;
+            cash += amountWon;
+            amountWon = 0;
+            btn1 = false;
+        }
+        if (btn5 == true){
+            amountWon = cash * 5;
+            totalWon += amountWon;
+            cash += amountWon;
+            amountWon = 0;
+            btn5 = false;
+        }
+        if (btn10 == true){
+            amountWon = cash * 8;
+            totalWon += amountWon;
+            cash += amountWon;
+            amountWon = 0;
+            btn10 = false;
+        }
+
+        //delay inner html
+        winnerTimeout = setTimeout(function(){
+           $("#seperator").html("**ULTIMATE JACKPOT!!**");
+           $("#credits").html(cash);
+            $("#totalWonCredit").html(totalWon);
+            lightLoopOn(); //flash lights on win
+        } , 2000);
+   }
+        
+   //  function to flash side divs upon a win
     function lightLoopOn(){
         setTimeout(function(){
             var lights = document.querySelectorAll('.sideLights');
@@ -209,75 +277,8 @@ $(document).ready(function(){
             }
         }, 150);
     }
-    
-
-   //match 3 icons function
-    function winner3match(){
-        win = true;
-        if (btn1 == true){
-            totalWon += 1;
-            amountWon = 4;
-            cash += amountWon;
-            amountWon = 0;
-            btn1 = false;
-        }
-        if (btn5 == true){
-            totalWon += 5;
-            amountWon = 11;
-            cash += amountWon;
-            amountWon = 0;
-            btn5 = false;
-        }
-        if (btn10 == true){
-            totalWon += 10;
-            amountWon = 22;
-            cash += amountWon;
-            amountWon = 0;
-            btn10 = false;
-        }
-
-        //delay inner html 
-        winnerTimeout = setTimeout(function(){
-           $("#seperator").html("TRIPLE Match!!");
-           $("#credits").html(cash);
-          } , 2000);
-   }
-
-    //match all icons function
-    function winnerAllmatch(){
-        win = true;
-        if (btn1 == true){
-            totalWon += 1;
-            amountWon = cash * 10;
-            cash += amountWon;
-            amountWon = 0;
-            btn1 = false;
-        }
-        if (btn5 == true){
-            totalWon += 5;
-            amountWon = cash * 20;
-            cash += amountWon;
-            amountWon = 0;
-            btn5 = false;
-        }
-        if (btn10 == true){
-            totalWon += 10;
-            amountWon = cash * 50;
-            cash += amountWon;
-            amountWon = 0;
-            btn10 = false;
-        }
-
-        //delay inner html
-        winnerTimeout = setTimeout(function(){
-           $("#seperator").html("**ULTIMATE JACKPOT!!**");
-           $("#credits").html(cash);
-          } , 2000);
-   }
-        
-
    
-    //use strings (img names) to check for winner
+    //use strings (img names) to check reels for winner
     function checkReels(reel1_r, reel2_r, reel3_r, reel4_r) {
         var oneMatch;
         

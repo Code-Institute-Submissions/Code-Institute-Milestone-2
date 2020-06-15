@@ -3,6 +3,8 @@
     margin: 30px auto 40px auto;
 }
 
+button:focus { outline-style: none; }
+
 #left-of-main{
     margin: 0;
     width: 50px;
@@ -36,16 +38,13 @@
 /*reels*/
 
 #center-of-main{
-    background-color: lightgrey;
     border-radius: 10px;
     margin: auto;
     max-width: 800px;
     text-align: center;
-    border: 3px solid pink;
 }
 
 #reels-holder{
-    background-color: lightcoral;
     max-width: 800px;
     position: relative;
     display: flex;
@@ -112,14 +111,13 @@
 .info-section{
     display: flex;
     margin: 40px auto 0 auto;
+    font-size: 2rem;
 }
 
 .score{
     display: flex;
-    font-size: 2rem;
     width: 100%;
     height: 300px;
-    border: 1px solid green;
 }
 
 #credit{
@@ -161,13 +159,9 @@
     height: 100px;
 }
 
-.win-lose{
+.total-won{
     margin: 0 auto 0 auto;
     width: 100%;
     height: 300px;
-    border: 1px solid green;
 }
 
-#winLose_p{
- 
-}
