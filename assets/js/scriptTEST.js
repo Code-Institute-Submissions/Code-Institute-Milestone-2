@@ -11,30 +11,79 @@ $(document).ready(function(){
     var btn10;
     var lightCountOn = 0; //flash side lights on win
 
-    $("#spinBtn1").click(function() {
-        cash -= 1;
-        betAmount = 1;
+//---------------------------------------------------------------new code
+
+    let bton1;
+    let bton5;
+    let bton10;
+
+    const bets = {
+        bet1: {
+            amount: 1
+        },
+        bet5: {
+            amount: 5
+        },
+        bet10: {
+            amount: 10
+        }
+    };
+
+    const matches = {
+        match2: {
+            bton1: 3,
+            bton5: 8,
+            bton10: 15
+        },
+        match3: {
+            bton1: 8,
+            bton5: 15,
+            bton10: 35
+        },
+        match4: {
+
+        }
+    };
+
+
+//-----------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------new code
+
+    function btnClicked(btn){   //sending OBJECT values 
+        if (btn == bets.bet1){
+            btn1 = true;
+        }
+        if (btn == bets.bet5){
+            btn5 = true;
+        }
+        if (btn == bets.bet10){
+            btn10 = true;
+        }
+        cash -= btn.amount;
         document.getElementById("credits").innerHTML = cash;
-        btn1 = true;
+        console.log("btn1_Clicked")
         runGame();
+    }
+
+//-----------------------------------------------------------------------
+
+//------------------------------------------------------------new changed 
+
+    $("#spinBtn1").click(function() {
+        btnClicked(bets.bet1)
     });
 
     $("#spinBtn5").click(function() {
-        cash -= 5;
-        betAmount = 5;
-        document.getElementById("credits").innerHTML = cash;
-        btn5 = true;
-        runGame();
+        btnClicked(bets.bet5)
     });
 
     $("#spinBtn10").click(function() {
-        cash -= 10;
-        betAmount = 10;
-        document.getElementById("credits").innerHTML = cash;
-        btn10 = true;
-        runGame();
+        btnClicked(bets.bet10)
     });
-    
+
+//-----------------------------------------------------------------------
 
     function runGame() {
         lightCountOn = 0;
