@@ -45,6 +45,9 @@ $(document).ready(function(){
         }
     };
 
+    const spin_reels = ["\"#reels-container1\"","\"#reels-container2\"",
+                        "\"#reels-container3\"","\"#reels-container4\""]
+
 
 //-----------------------------------------------------------------------
 
@@ -92,8 +95,40 @@ $(document).ready(function(){
         document.getElementById("seperator").innerHTML = ""; 
 
 
+//-----------------------------------------------------------------new code
+
+        for (i=0 ; i<5; i++) {
+            console.log(spin_reels[i])
+            $(spin_reels[i]).animate({marginTop: "-=1000px"}, 200);
+            $(spin_reels[i]).animate({marginTop: "0"}, 200);
+            $(spin_reels[i]).animate({marginTop: "-=10px"}, 200);
+            $(spin_reels[i]).animate({marginTop: "+=10px"}, 200);
+            $(spin_reels[i]).animate({marginTop: "0px"}, 200);
+
+            var ReplaceQuote = spin_reels[i].replace("\"","");
+            var alteredSpinStr = "\"" + ReplaceQuote + " > div\"";
+            
+            console.log(alteredSpinStr);
+            var imgsA = $(alteredSpinStr).remove().toArray();
+            for (var i = imgsA.length - 1; i >= 1; i--) {
+                var j = Math.floor(Math.random() * (i+1));
+                var imgsBi = imgsA[i];
+                var imgsBj = imgsA[j];
+                imgsA[i] = imgsBj;
+                imgsA[j] = imgsBi;
+            }  
+
+            var reel1_spinning = true;
+            $(spin_reels[i]).append(imgsA);
+            var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
+            var r1_remove = reels1_div.replace('.jpg">',"");
+        }
+
+//-----------------------------------------------------------------------
+
+
         /*first reel*/
-        $("#reels-container1").animate({marginTop: "-=1000px"}, 200);
+/*       $("#reels-container1").animate({marginTop: "-=1000px"}, 200);
         $("#reels-container1").animate({marginTop: "0"}, 200);
         $("#reels-container1").animate({marginTop: "-=10px"}, 200);
         $("#reels-container1").animate({marginTop: "+=10px"}, 200);
@@ -117,7 +152,7 @@ $(document).ready(function(){
 
 
         /*second reel*/
-        $("#reels-container2").animate({marginTop: "-=1000px"}, 200);
+/*       $("#reels-container2").animate({marginTop: "-=1000px"}, 200);
         $("#reels-container2").animate({marginTop: "0"}, 200);
         $("#reels-container2").animate({marginTop: "-=1000px"}, 200);
         $("#reels-container2").animate({marginTop: "0"}, 200);
@@ -141,7 +176,7 @@ $(document).ready(function(){
 
 
         /*third reel*/
-        $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
+/*        $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
         $("#reels-container3").animate({marginTop: "0"}, 200);
         $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
         $("#reels-container3").animate({marginTop: "0"}, 200);
@@ -166,7 +201,7 @@ $(document).ready(function(){
 
 
         /*fourth reel*/
-        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
+/*        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
         $("#reels-container4").animate({marginTop: "0"}, 200);
         $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
         $("#reels-container4").animate({marginTop: "0"}, 200);
@@ -190,7 +225,7 @@ $(document).ready(function(){
         var reels4_div = document.getElementById("reels-container4").firstElementChild.innerHTML.split("/")[2];
         var r4_remove = reels4_div.replace('.jpg">',"");
 
-
+*/
         //send strings to function with ".jpg" removed
         checkReels(r1_remove, r2_remove, r3_remove, r4_remove);
         
