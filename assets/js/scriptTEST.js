@@ -17,7 +17,7 @@ $(document).ready(function(){
     let bton5;
     let bton10;
 
-    const bets = {
+    const bets = {  //sent to functions within jQ when btn clicked
         bet1: {
             amount: 1
         },
@@ -45,10 +45,17 @@ $(document).ready(function(){
         }
     };
 
-    const spin_reels = ["\"#reels-container1\"","\"#reels-container2\"",
-                        "\"#reels-container3\"","\"#reels-container4\""]
+    const spin_reels = ["#reels-container1","#reels-container2",
+                        "#reels-container3","#reels-container4"];
 
 
+    //const reels_to_check = [check1, check2, check3, check4];
+    const reels_to_check = ["chk_one","chk_two","chk_three","chk_four"];
+
+    const reel_container_id = ["reels-container1","reels-container2",                                       "reels-container3","reels-container4"];
+
+    //const reel_remove_tag = [r1_remove, r2_remove, r3_remove, r4_remove];
+    const reel_remove_tag = ["Rchk_one","Rchk_two","Rchk_three","Rchk_four"];
 //-----------------------------------------------------------------------
 
 
@@ -57,16 +64,18 @@ $(document).ready(function(){
     function btnClicked(btn){   //sending OBJECT values 
         if (btn == bets.bet1){
             btn1 = true;
+            console.log("btn1_Clicked")
         }
         if (btn == bets.bet5){
             btn5 = true;
+            console.log("btn5_Clicked")
         }
         if (btn == bets.bet10){
             btn10 = true;
+            console.log("btn10_Clicked")
         }
         cash -= btn.amount;
         document.getElementById("credits").innerHTML = cash;
-        console.log("btn1_Clicked")
         runGame();
     }
 
@@ -97,7 +106,7 @@ $(document).ready(function(){
 
 //-----------------------------------------------------------------new code
 
-        for (i=0 ; i<5; i++) {
+        for (i=0 ; i < spin_reels.length; i++) {
             console.log(spin_reels[i])
             $(spin_reels[i]).animate({marginTop: "-=1000px"}, 200);
             $(spin_reels[i]).animate({marginTop: "0"}, 200);
@@ -105,24 +114,34 @@ $(document).ready(function(){
             $(spin_reels[i]).animate({marginTop: "+=10px"}, 200);
             $(spin_reels[i]).animate({marginTop: "0px"}, 200);
 
-            var ReplaceQuote = spin_reels[i].replace("\"","");
-            var alteredSpinStr = "\"" + ReplaceQuote + " > div\"";
+            var alteredSpinStr =  spin_reels[i] + " > div";
             
-            console.log(alteredSpinStr);
+            
             var imgsA = $(alteredSpinStr).remove().toArray();
-            for (var i = imgsA.length - 1; i >= 1; i--) {
-                var j = Math.floor(Math.random() * (i+1));
-                var imgsBi = imgsA[i];
+            for (var k = imgsA.length - 1; k >= 1; k--) {
+                var j = Math.floor(Math.random() * (k+1));
+                var imgsBk = imgsA[k];
                 var imgsBj = imgsA[j];
-                imgsA[i] = imgsBj;
-                imgsA[j] = imgsBi;
-            }  
+                imgsA[k] = imgsBj;
+                imgsA[j] = imgsBk;
+            } 
 
-            var reel1_spinning = true;
+
             $(spin_reels[i]).append(imgsA);
-            var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
-            var r1_remove = reels1_div.replace('.jpg">',"");
+            
+            //below code is replacing this
+            //var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
+            //var r1_remove = reels1_div.replace('.jpg">',"");
         }
+
+        for (var check=0; check<reels_to_check.length; check++){
+            reels_to_check[check] = getElementById(reel-reel_container_id[check]).firstElementChild.innerHTML.split("/")[2];
+
+            console.log("remove tag loop");
+
+            reel_remove_tag[check] = reels_to_check[check].replace('.jpg">',"");
+        }
+        
 
 //-----------------------------------------------------------------------
 
@@ -227,7 +246,8 @@ $(document).ready(function(){
 
 */
         //send strings to function with ".jpg" removed
-        checkReels(r1_remove, r2_remove, r3_remove, r4_remove);
+        checkReels(reel_remove_tag[0], reel_remove_tag[1], reel_remove_tag[2],              reel_remove_tag[3]);
+        console.log(reel_remove_tag[0],);
         
 
 
@@ -366,7 +386,7 @@ $(document).ready(function(){
     //use strings (img names) to check reels for winner
     function checkReels(reel1_r, reel2_r, reel3_r, reel4_r) {
         var oneMatch;
-        
+        console.log("checkReels called");
         //----------------------------TWO MATCH ON REELS---------------------
         //reel 1, two match
         if (reel1_r == reel2_r && reel1_r !== reel3_r && reel1_r !== reel4_r){
