@@ -48,13 +48,12 @@ $(document).ready(function(){
     const spin_reels = ["#reels-container1","#reels-container2",
                         "#reels-container3","#reels-container4"];
 
-
-    //const reels_to_check = [check1, check2, check3, check4];
     const reels_to_check = ["chk_one","chk_two","chk_three","chk_four"];
 
+    //id of the divs holding the imgs
     const reel_container_id = ["reels-container1","reels-container2",                                       "reels-container3","reels-container4"];
 
-    //const reel_remove_tag = [r1_remove, r2_remove, r3_remove, r4_remove];
+    //variables with .jpg tag removed
     const reel_remove_tag = ["Rchk_one","Rchk_two","Rchk_three","Rchk_four"];
 //-----------------------------------------------------------------------
 
@@ -64,15 +63,12 @@ $(document).ready(function(){
     function btnClicked(btn){   //sending OBJECT values 
         if (btn == bets.bet1){
             btn1 = true;
-            console.log("btn1_Clicked")
         }
         if (btn == bets.bet5){
             btn5 = true;
-            console.log("btn5_Clicked")
         }
         if (btn == bets.bet10){
             btn10 = true;
-            console.log("btn10_Clicked")
         }
         cash -= btn.amount;
         document.getElementById("credits").innerHTML = cash;
@@ -107,17 +103,16 @@ $(document).ready(function(){
 //-----------------------------------------------------------------new code
 
         for (i=0 ; i < spin_reels.length; i++) {
-            console.log(spin_reels[i])
             $(spin_reels[i]).animate({marginTop: "-=1000px"}, 200);
             $(spin_reels[i]).animate({marginTop: "0"}, 200);
             $(spin_reels[i]).animate({marginTop: "-=10px"}, 200);
             $(spin_reels[i]).animate({marginTop: "+=10px"}, 200);
             $(spin_reels[i]).animate({marginTop: "0px"}, 200);
-
+            
             var alteredSpinStr =  spin_reels[i] + " > div";
-            
-            
+                        
             var imgsA = $(alteredSpinStr).remove().toArray();
+
             for (var k = imgsA.length - 1; k >= 1; k--) {
                 var j = Math.floor(Math.random() * (k+1));
                 var imgsBk = imgsA[k];
@@ -126,22 +121,22 @@ $(document).ready(function(){
                 imgsA[j] = imgsBk;
             } 
 
-
             $(spin_reels[i]).append(imgsA);
             
             //below code is replacing this
             //var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
             //var r1_remove = reels1_div.replace('.jpg">',"");
         }
-
-        for (var check=0; check<reels_to_check.length; check++){
-            reels_to_check[check] = getElementById(reel-reel_container_id[check]).firstElementChild.innerHTML.split("/")[2];
-
-            console.log("remove tag loop");
-
-            reel_remove_tag[check] = reels_to_check[check].replace('.jpg">',"");
+        //loop to remove .jpg from final images
+        for (var c=0; c<reels_to_check.length; c++){
+            reels_to_check[c] = document.getElementById(reel_container_id[c]).firstElementChild.innerHTML.split("/")[2];
+            reel_remove_tag[c] = reels_to_check[c].replace('.jpg">',"");
         }
         
+
+//-----------------------------------------------------------------new code
+        
+
 
 //-----------------------------------------------------------------------
 
@@ -166,91 +161,38 @@ $(document).ready(function(){
         $("#reels-container1").append(imgsA);
         var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
         var r1_remove = reels1_div.replace('.jpg">',"");
-        
-
-
-
-        /*second reel*/
-/*       $("#reels-container2").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container2").animate({marginTop: "0"}, 200);
-        $("#reels-container2").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container2").animate({marginTop: "0"}, 200);
-        $("#reels-container2").animate({marginTop: "-=10px"}, 200);
-        $("#reels-container2").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container2").animate({marginTop: "0px"}, 200);
-
-        var imgsA = $("#reels-container2 > div").remove().toArray();
-        for (var i = imgsA.length - 1; i >= 1; i--) {
-            var j = Math.floor(Math.random() * (i+1));
-            var imgsBi = imgsA[i];
-            var imgsBj = imgsA[j];
-            imgsA[i] = imgsBj;
-            imgsA[j] = imgsBi;
-        }
-
-        $("#reels-container2").append(imgsA);
-        var reels2_div = document.getElementById("reels-container2").firstElementChild.innerHTML.split("/")[2];
-        var r2_remove = reels2_div.replace('.jpg">',"");
-
-
-
-        /*third reel*/
-/*        $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container3").animate({marginTop: "0"}, 200);
-        $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container3").animate({marginTop: "0"}, 200);
-        $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container3").animate({marginTop: "0"}, 200);
-        $("#reels-container3").animate({marginTop: "-=10px"}, 200);
-        $("#reels-container3").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container3").animate({marginTop: "0px"}, 200);
-
-        var imgsA = $("#reels-container3 > div").remove().toArray();
-        for (var i = imgsA.length - 1; i >= 1; i--) {
-            var j = Math.floor(Math.random() * (i+1));
-            var imgsBi = imgsA[i];
-            var imgsBj = imgsA[j];
-            imgsA[i] = imgsBj;
-            imgsA[j] = imgsBi;
-        }
-        $("#reels-container3").append(imgsA);
-        var reels3_div = document.getElementById("reels-container3").firstElementChild.innerHTML.split("/")[2];
-        var r3_remove = reels3_div.replace('.jpg">',"");
-
-
-
-        /*fourth reel*/
-/*        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container4").animate({marginTop: "0"}, 200);
-        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container4").animate({marginTop: "0"}, 200);
-        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container4").animate({marginTop: "0"}, 200);
-        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container4").animate({marginTop: "0"}, 200);
-        $("#reels-container4").animate({marginTop: "-=10px"}, 200);
-        $("#reels-container4").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container4").animate({marginTop: "0px"}, 200,);
-
-        var imgsA = $("#reels-container4 > div").remove().toArray();
-        for (var i = imgsA.length - 1; i >= 1; i--) {
-            var j = Math.floor(Math.random() * (i+1));
-            var imgsBi = imgsA[i];
-            var imgsBj = imgsA[j];
-            imgsA[i] = imgsBj;
-            imgsA[j] = imgsBi;
-        }
-        $("#reels-container4").append(imgsA);
-        var reels4_div = document.getElementById("reels-container4").firstElementChild.innerHTML.split("/")[2];
-        var r4_remove = reels4_div.replace('.jpg">',"");
-
 */
         //send strings to function with ".jpg" removed
-        checkReels(reel_remove_tag[0], reel_remove_tag[1], reel_remove_tag[2],              reel_remove_tag[3]);
-        console.log(reel_remove_tag[0],);
-        
+    /*  checkReels(reel_remove_tag[0], reel_remove_tag[1], reel_remove_tag[2],              reel_remove_tag[3]);
+*/
 
+        find_match(reel_remove_tag);
+        function find_match(reel_remove_tag){
+            var object = {};
+            var result = [];
 
+            reel_remove_tag.forEach(function (item){
+                if(!object[item])
+                    object[item] = 0;
+                    object[item] += 1;
+            })
+            for (var prop in object) {
+                if(object[prop] == 2) {
+                    //result.push(prop);
+                    winner2match();
+                }
+                if(object[prop] == 3) {
+                    //result.push(prop);
+                    winner3match();
+                }
+                if(object[prop] == 4) {
+                    //result.push(prop);
+                    winnerAllmatch();
+                }
+            }
+            //console.log(result);
+            //return result;
+        }
 
     }; //end of runGame Function
 
@@ -287,7 +229,7 @@ $(document).ready(function(){
            $("#totalWonCredit").html(totalWon);
 
             lightLoopOn(); //flash lights on win
-        } , 2000);
+        } , 500);
     }
 
    
@@ -322,7 +264,7 @@ $(document).ready(function(){
            $("#credits").html(cash);
            $("#totalWonCredit").html(totalWon);
             lightLoopOn(); //flash lights on win
-        } , 2000);
+        } , 500);
    }
 
     //match all icons function
@@ -356,7 +298,7 @@ $(document).ready(function(){
            $("#credits").html(cash);
             $("#totalWonCredit").html(totalWon);
             lightLoopOn(); //flash lights on win
-        } , 2000);
+        } , 500);
    }
         
    //  function to flash side divs upon a win
@@ -384,9 +326,9 @@ $(document).ready(function(){
     }
    
     //use strings (img names) to check reels for winner
-    function checkReels(reel1_r, reel2_r, reel3_r, reel4_r) {
+ /*   function checkReels(reel1_r, reel2_r, reel3_r, reel4_r) {
         var oneMatch;
-        console.log("checkReels called");
+        console.log("checkREELS",reel1_r, reel2_r, reel3_r, reel4_r);
         //----------------------------TWO MATCH ON REELS---------------------
         //reel 1, two match
         if (reel1_r == reel2_r && reel1_r !== reel3_r && reel1_r !== reel4_r){
@@ -509,6 +451,7 @@ $(document).ready(function(){
 
             
     };// end of checkReels function
+    */
 
 }); //end of document.ready
 
