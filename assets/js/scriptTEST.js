@@ -55,10 +55,20 @@ $(document).ready(function(){
 
     //variables with .jpg tag removed
     const reel_remove_tag = ["Rchk_one","Rchk_two","Rchk_three","Rchk_four"];
-//-----------------------------------------------------------------------
 
 
-//-----------------------------------------------------------------new code
+    $("#spinBtn1").click(function() {
+        btnClicked(bets.bet1)
+    });
+
+    $("#spinBtn5").click(function() {
+        btnClicked(bets.bet5)
+    });
+
+    $("#spinBtn10").click(function() {
+        btnClicked(bets.bet10)
+    });
+    
 
     function btnClicked(btn){   //sending OBJECT values 
         if (btn == bets.bet1){
@@ -74,24 +84,7 @@ $(document).ready(function(){
         document.getElementById("credits").innerHTML = cash;
         runGame();
     }
-
-//-----------------------------------------------------------------------
-
-//------------------------------------------------------------new changed 
-
-    $("#spinBtn1").click(function() {
-        btnClicked(bets.bet1)
-    });
-
-    $("#spinBtn5").click(function() {
-        btnClicked(bets.bet5)
-    });
-
-    $("#spinBtn10").click(function() {
-        btnClicked(bets.bet10)
-    });
-
-//-----------------------------------------------------------------------
+s
 
     function runGame() {
         lightCountOn = 0;
@@ -99,8 +92,6 @@ $(document).ready(function(){
         //clear result box
         document.getElementById("seperator").innerHTML = ""; 
 
-
-//-----------------------------------------------------------------new code
 
         for (i=0 ; i < spin_reels.length; i++) {
             $(spin_reels[i]).animate({marginTop: "-=1000px"}, 200);
@@ -122,10 +113,7 @@ $(document).ready(function(){
             } 
 
             $(spin_reels[i]).append(imgsA);
-            
-            //below code is replacing this
-            //var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
-            //var r1_remove = reels1_div.replace('.jpg">',"");
+
         }
         //loop to remove .jpg from final images
         for (var c=0; c<reels_to_check.length; c++){
@@ -133,38 +121,6 @@ $(document).ready(function(){
             reel_remove_tag[c] = reels_to_check[c].replace('.jpg">',"");
         }
         
-
-//-----------------------------------------------------------------new code
-        
-
-
-//-----------------------------------------------------------------------
-
-
-        /*first reel*/
-/*       $("#reels-container1").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container1").animate({marginTop: "0"}, 200);
-        $("#reels-container1").animate({marginTop: "-=10px"}, 200);
-        $("#reels-container1").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container1").animate({marginTop: "0px"}, 200);
-
-        var imgsA = $("#reels-container1 > div").remove().toArray();
-        for (var i = imgsA.length - 1; i >= 1; i--) {
-            var j = Math.floor(Math.random() * (i+1));
-            var imgsBi = imgsA[i];
-            var imgsBj = imgsA[j];
-            imgsA[i] = imgsBj;
-            imgsA[j] = imgsBi;
-        }
-
-        var reel1_spinning = true;
-        $("#reels-container1").append(imgsA);
-        var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
-        var r1_remove = reels1_div.replace('.jpg">',"");
-*/
-        //send strings to function with ".jpg" removed
-    /*  checkReels(reel_remove_tag[0], reel_remove_tag[1], reel_remove_tag[2],              reel_remove_tag[3]);
-*/
 
         find_match(reel_remove_tag);
         function find_match(reel_remove_tag){
@@ -179,7 +135,12 @@ $(document).ready(function(){
             for (var prop in object) {
                 if(object[prop] == 2) {
                     //result.push(prop);
-                    winner2match();
+                    //winner2match();
+
+                    //test to check new winner2 function by sending value to it
+                    if (btn1 == true){
+                        winner2(matchs.match2.bton1)
+                    }
                 }
                 if(object[prop] == 3) {
                     //result.push(prop);
@@ -196,6 +157,14 @@ $(document).ready(function(){
 
     }; //end of runGame Function
 
+
+//------------------------------------------------new winner2match
+
+    function winner2(btnWin){
+         if (btnWin == 
+    }
+
+//----------------------------------------------------------------
 
     //match 2 icons function
     function winner2match(){
@@ -292,7 +261,7 @@ $(document).ready(function(){
             btn10 = false;
         }
 
-        //delay inner html
+        //delay inner html from showing
         winnerTimeout = setTimeout(function(){
            $("#seperator").html("**ULTIMATE JACKPOT!!**");
            $("#credits").html(cash);
@@ -301,7 +270,7 @@ $(document).ready(function(){
         } , 500);
    }
         
-   //  function to flash side divs upon a win
+    //  functions to flash side divs upon a win
     function lightLoopOn(){
         setTimeout(function(){
             var lights = document.querySelectorAll('.sideLights');
@@ -323,135 +292,7 @@ $(document).ready(function(){
                 $(lights[i]).removeClass('on');
             }
         }, 150);
-    }
-   
-    //use strings (img names) to check reels for winner
- /*   function checkReels(reel1_r, reel2_r, reel3_r, reel4_r) {
-        var oneMatch;
-        console.log("checkREELS",reel1_r, reel2_r, reel3_r, reel4_r);
-        //----------------------------TWO MATCH ON REELS---------------------
-        //reel 1, two match
-        if (reel1_r == reel2_r && reel1_r !== reel3_r && reel1_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel1_r == reel3_r && reel1_r !== reel2_r && reel1_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel1_r == reel4_r && reel1_r !== reel2_r && reel1_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-
-        //reel 2, two match
-        if (reel2_r == reel1_r && reel2_r !== reel3_r && reel2_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel2_r == reel3_r && reel2_r !== reel1_r && reel1_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel2_r == reel4_r && reel2_r !== reel1_r && reel1_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-
-        //reel 3, two match
-        if (reel3_r == reel1_r && reel3_r !== reel2_r && reel3_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel3_r == reel2_r && reel3_r !== reel1_r && reel3_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel3_r == reel4_r && reel3_r !== reel1_r && reel3_r !== reel2_r){
-            oneMatch = true;
-            winner2match();
-        }
-
-        //reel 4, two match
-        if (reel4_r == reel1_r && reel4_r !== reel2_r && reel4_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel4_r == reel2_r && reel4_r !== reel1_r && reel4_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel4_r == reel3_r && reel4_r !== reel1_r && reel4_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-
-
-        //----------------------------THREE MATCH ON REELS---------------------
-        //reel 1, three match
-        if (reel1_r == reel2_r && reel1_r == reel3_r && reel1_r !== reel4_r){
-            twoMatch = true;
-            winner3match();
-        }
-        if (reel1_r == reel2_r && reel1_r == reel4_r && reel1_r !== reel3_r){
-            oneMatch = true;
-            winner3match();
-        }
-        if (reel1_r == reel3_r && reel1_r == reel4_r && reel1_r !== reel2_r){
-            oneMatch = true;
-            winner3match();
-        }
-
-        //reel 2, three match
-        if (reel2_r == reel1_r && reel2_r == reel3_r && reel2_r !== reel4_r){
-            twoMatch = true;
-            winner3match();
-        }
-        if (reel2_r == reel1_r && reel2_r == reel4_r && reel2_r !== reel3_r){
-            oneMatch = true;
-            winner3match();
-        }
-        if (reel2_r == reel3_r && reel2_r == reel4_r && reel2_r !== reel1_r){
-            oneMatch = true;
-            winner3match();
-        }
-
-        //reel 3, three match
-        if (reel3_r == reel1_r && reel3_r == reel2_r && reel3_r !== reel4_r){
-            twoMatch = true;
-            winner3match();
-        }
-        if (reel3_r == reel1_r && reel3_r == reel4_r && reel3_r !== reel2_r){
-            oneMatch = true;
-            winner3match();
-        }
-        if (reel3_r == reel2_r && reel3_r == reel4_r && reel3_r !== reel1_r){
-            oneMatch = true;
-            winner3match();
-        }
-
-        //reel 4, three match
-        if (reel4_r == reel1_r && reel4_r == reel2_r && reel4_r !== reel3_r){
-            twoMatch = true;
-            winner3match();
-        }
-        if (reel4_r == reel1_r && reel4_r == reel3_r && reel4_r !== reel2_r){
-            oneMatch = true;
-            winner3match();
-        }
-        if (reel4_r == reel2_r && reel4_r == reel3_r && reel4_r !== reel1_r){
-            oneMatch = true;
-            winner3match();
-        }
-
-        //----------------------------FOUR MATCH ON REELS---------------------
-        if (reel1_r == reel2_r && reel1_r == reel3_r && reel1_r == reel4_r){
-            winnerAllmatch();
-        }
-
-            
-    };// end of checkReels function
-    */
+    } // end of flash lights functions
 
 }); //end of document.ready
 
