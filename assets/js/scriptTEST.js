@@ -41,7 +41,9 @@ $(document).ready(function(){
             bton10: 35
         },
         match4: {
-
+            bton1: cash*3,
+            bton5: cash*5,
+            bton10: cash*8
         }
     };
 
@@ -160,8 +162,6 @@ $(document).ready(function(){
 
                 //if 3 matching images found
                 if(object[prop] == 3) {
-                    //result.push(prop);
-                    winner3match();
 
                     winnerTimeout = setTimeout(function(){
                         $("#seperator").html("TRIPLE Match!!");
@@ -169,14 +169,39 @@ $(document).ready(function(){
                         $("#totalWonCredit").html(totalWon);
                         lightLoopOn(); //flash lights on win
                     } , 500);
-                    
+
+                    if (btn1 == true){
+                        winnerMatch(matches.match3.bton1)
+                    }   
+                    if (btn5 == true){
+                        winnerMatch(matches.match3.bton5)
+                    }
+                    if (btn10 == true){
+                        winnerMatch(matches.match3.bton10)
+                    }                   
 
                 }
 
                 //if 4 matching images found
                 if(object[prop] == 4) {
-                    //result.push(prop);
-                    winnerAllmatch();
+
+                    winnerTimeout = setTimeout(function(){
+                        $("#seperator").html("**ULTIMATE JACKPOT!!**");
+                        $("#credits").html(cash);
+                        $("#totalWonCredit").html(totalWon);
+                        lightLoopOn(); //flash lights on win
+                    } , 500);
+
+                    if (btn1 == true){
+                        winnerMatch(matches.match4.bton1)
+                    }   
+                    if (btn5 == true){
+                        winnerMatch(matches.match4.bton5)
+                    }
+                    if (btn10 == true){
+                        winnerMatch(matches.match4.bton10)
+                    }   
+
                 }
             }
 
