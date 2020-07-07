@@ -84,7 +84,7 @@ $(document).ready(function(){
         document.getElementById("credits").innerHTML = cash;
         runGame();
     }
-s
+
 
     function runGame() {
         lightCountOn = 0;
@@ -122,6 +122,7 @@ s
         }
         
 
+        //check for matching images
         find_match(reel_remove_tag);
         function find_match(reel_remove_tag){
             var object = {};
@@ -132,27 +133,53 @@ s
                     object[item] = 0;
                     object[item] += 1;
             })
-            for (var prop in object) {
-                if(object[prop] == 2) {
-                    //result.push(prop);
-                    //winner2match();
 
-                    //test to check new winner2 function by sending value to it
+            for (var prop in object) {
+
+                //if 2 matching images found
+                if(object[prop] == 2) {
+
+                    winnerTimeout = setTimeout(function(){
+                        $("#seperator").html("Double Match!!");
+                        $("#credits").html(cash);
+                        $("#totalWonCredit").html(totalWon);
+                        lightLoopOn(); //flash lights on win
+                    } , 500);
+
                     if (btn1 == true){
-                        winner2(matchs.match2.bton1)
+                        winnerMatch(matches.match2.bton1)
+                    }   
+                    if (btn5 == true){
+                        winnerMatch(matches.match2.bton5)
                     }
+                    if (btn10 == true){
+                        winnerMatch(matches.match2.bton10)
+                    }
+
                 }
+
+                //if 3 matching images found
                 if(object[prop] == 3) {
                     //result.push(prop);
                     winner3match();
+
+                    winnerTimeout = setTimeout(function(){
+                        $("#seperator").html("TRIPLE Match!!");
+                        $("#credits").html(cash);
+                        $("#totalWonCredit").html(totalWon);
+                        lightLoopOn(); //flash lights on win
+                    } , 500);
+                    
+
                 }
+
+                //if 4 matching images found
                 if(object[prop] == 4) {
                     //result.push(prop);
                     winnerAllmatch();
                 }
             }
-            //console.log(result);
-            //return result;
+
         }
 
     }; //end of runGame Function
@@ -160,14 +187,20 @@ s
 
 //------------------------------------------------new winner2match
 
-    function winner2(btnWin){
-         if (btnWin == 
+    function winnerMatch(btnWin){
+         console.log(btnWin);
+         totalWon += btnWin;
+         cash += btnWin;
+         btnWin = 0;
+         btn1 = false;
+         btn5 = false;
+         btn10 = false;
     }
 
 //----------------------------------------------------------------
 
     //match 2 icons function
-    function winner2match(){
+/*    function winner2match(){
         win = true;
         if (btn1 == true){
             totalWon += 3;
@@ -199,11 +232,11 @@ s
 
             lightLoopOn(); //flash lights on win
         } , 500);
-    }
+    }   */                  //COMMENTED OUT WHILE TESTING NEW WINNER FUNCTIONS
 
    
    //match 3 icons function
-    function winner3match(){
+/*    function winner3match(){
         win = true;
         if (btn1 == true){
             totalWon += 8;
@@ -268,7 +301,7 @@ s
             $("#totalWonCredit").html(totalWon);
             lightLoopOn(); //flash lights on win
         } , 500);
-   }
+   }*/
         
     //  functions to flash side divs upon a win
     function lightLoopOn(){
