@@ -110,14 +110,14 @@ button:focus { outline-style: none; }
 
 .info-section{
     display: flex;
-    margin: 40px auto 0 auto;
+    margin: 0 auto 0 auto;
     font-size: 2rem;
 }
 
 .score{
     display: flex;
     width: 100%;
-    height: 300px;
+    height: 60px;
 }
 
 #credit{
@@ -128,6 +128,24 @@ button:focus { outline-style: none; }
     margin: 0 10px 0 10px;
 }
 
+.total-won{
+    padding-left: 60px;
+    display: flex;
+    margin: 0 auto 0 auto;
+    width: 100%;
+    height: 60px;
+}
+
+#totalWonCredit{
+    margin-left: 20px;
+}
+
+#totalWon{
+    margin: 0 10px 0 30px;
+}
+
+
+/*buttons*/
 #btn-spinreel{
     position: relative;
     height: 400px;
@@ -135,33 +153,28 @@ button:focus { outline-style: none; }
 }
 
 #btn-spinreel button{
-    background-color: white;
+    background-color: rgb(253, 74, 74);
     border-radius: 20%;
-    border: 2px red solid;
+    border: none;
     font-size: 2rem;
+
+    cursor: pointer;
+    box-shadow: 1.5px 9px #999;
 }
 
-#spinBtn1{
-    margin: 5px;
-    width: 55px;
-    height: 55px;
+#btn-spinreel button:hover{background-color: rgb(255, 48, 48)}
+
+#btn-spinreel button:active {
+  background-color: rgb(255, 28, 28);
+  box-shadow: 0 5px #666;
+  transform: translateY(6px);
 }
 
-#spinBtn5{
-    margin: 5px;
-    width: 75px;
-    height: 75px;
+.betBtn{
+    margin: 0 20px 0 20px;
+    width: 70px;
+    height: 70px;
 }
 
-#spinBtn10{
-    margin: 5px;
-    width: 100px;
-    height: 100px;
-}
 
-.total-won{
-    margin: 0 auto 0 auto;
-    width: 100%;
-    height: 300px;
-}
 
