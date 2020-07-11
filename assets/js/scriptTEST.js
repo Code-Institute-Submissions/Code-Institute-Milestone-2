@@ -31,14 +31,14 @@ $(document).ready(function(){
 
     const matches = {
         match2: {
-            bton1: 3,
-            bton5: 8,
-            bton10: 15
+            bton1: 4,
+            bton5: 10,
+            bton10: 22
         },
         match3: {
             bton1: 8,
-            bton5: 15,
-            bton10: 35
+            bton5: 20,
+            bton10: 40
         },
         match4: {
             bton1: cash*3,
