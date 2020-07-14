@@ -89,6 +89,12 @@ $(document).ready(function(){
 
 
     function runGame() {
+        if (cash <= 0){
+            cash = 0;
+            $("#credits").html(cash);
+            $("#seperator").html("GAME OVER");
+            $(".betBtn").prop('disabled', true); 
+        }
         lightCountOn = 0;
 
         //clear result box
