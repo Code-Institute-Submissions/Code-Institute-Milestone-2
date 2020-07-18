@@ -1,64 +1,150 @@
 # Basic JavaScript slot machine
-veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+The aim of this project was to create a basic slot machine type game that a user could interact with by betting money and spinning the reels to try and win.
+The game consists of 4 reels with various images of lego minifigures that are shuffled in a random order each time the reels are spun.
 
-## UX
-Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
-"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+## Table of Contents
+1. [**UX**](#ux)
+    - [**Project Goals**](#project-goals)
+    - [**User Goals**](#player-goals)
+    - [**User Stories**](#user-stories)
+    - [**Design Choices**](#design-choices)
+    
 
-Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
-"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+2. [**Features**](#features)   
+    - [**Existing Features**](#existing-features)
+    - [**Features Left to Implement**](#features-left-to-implement)
+
+3. [**Technologies**](#technologies)
+
+4. [**Testing**](#testing)
+
+5. [**Deployment**](#deployment)
+    - [**How to Run Code Locally**](#how-to-run-locally)
+
+6. [**Credits**](#credits)
+    - [**Content**](#content)
+    - [**Media**](#media)    
+    - [**Acknowledgements**](#acknowledgements)
+    
+    ## UX
+
+#### Project Goals
+
+### User Goals
+
+The aim of this project was to use JavaScript to make a site that a user could interact with. The final idea was to go with a basic slot machine style game that was easy for the user to use.
+
+#### User Stories
+
+The game starts with 100 dollars that the user has to bet with. The user has a choice of three different values in which they can bet; 1, 5, or 10 dollars. The higher the amount the user bets, the higher the reward if the user wins. A win is accomplished by matching images on the spinning reels.
+
+### Design Choices
+The design idea was to keep th.........................................
+
+
+**icons**
+- I made use of the large array of icons that font-awesome has to provide its a simple way of creating an effect to show what the site has to offer.
+- i made use of the, Fork, Wine glass, Ship, Swimming pool & umbrella icons which i though was an effective way to show users that our site offers the relevent services.
+
+**colors**
+- Throughout the majority of my projec......................................
+
+**styling**
+- I opted for a basic navbar with three links to ensure the user does not get lost with too many options to venture off from.
+- The background Image is of an aerial view of a city night sky with an Opaque overlay to reduce the intensity of the sharp city lights, I felt that it gives off a feeling or relaxtaion and calmness to the user when landing upon the page.
+- I have made use of the boostrap grid system to create a less complex approach to relaying my content with in the site.
+
+**logo**
+- I once again obtained the logo as a font-awesome icon to ensure simplicity.
+- I chose an aeroplane as i felt it suited the needs of a travel app within the right context.
 
 ## Features
-* **maiores alias.** repudiandae sint et molestiae non recusandae. 
-* **maiores alias.** repudiandae sint et molestiae non recusandae. 
-* **maiores alias.** repudiandae sint et molestiae non recusandae. 
-* **deserunt mollitia animi.**  repudiandae sint et molestiae non recusandae. 
-* ** deserunt mollitia animi.** repudiandae sint et molestiae non recusandae. 
-* ** deserunt mollitia animi.** repudiandae sint et molestiae non recusandae. 
-* ** deserunt mollitia animi.** repudiandae sint et molestiae non recusandae. 
-### Features left to implement:
-* ** deserunt mollitia animi** repudiandae sint et molestiae non recusandae. repudiandae sint et molestiae non recusandae. repudiandae sint et molestiae non recusandae. repudiandae sint et molestiae non recusandae. repudiandae sint et molestiae non recusandae. 
+### Existing Features
+-The app uses the Google Maps and Google Places API to provide search results about accommodation, places of interest and places to eat. Each individual result may be added to a list below the map so user's can keep track of the places they wish to visit, stay or dine.
 
-## Technologies used
-* **Html5**
-* **Css**
-* **Javascript**
-* **JQuery**
-* **Bootstrap** 
+### Features left to implement 
+-In the future, I would like users to be able to save the pdf file and share it through social media to enable friends and family to have a look at the itinerary for future purposes. 
 
-### Libraries
+## Technologies Used
+
+- This project uses HTML, CSS and JavaScript programming languages.
+- [JQuery](https://jquery.com)
+    - The project uses **JQuery** to simplify DOM manipulation.
+
+- [Bootstrap](https://www.bootstrapcdn.com/)
+    - The project uses **Bootstrap** to simplify the structure of the website and make the website responsive easily.
+    - The project also uses Bootstrap to provide icons from [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)
+- [GitHub](https://github.com/)
+    - This project uses **GitHub** to store and share all project code remotely. 
+
+- [Google Fonts](https://fonts.google.com/)
+    - The project uses **Google fonts** to style the website fonts.
+
+- [HTML Color Picker](https://www.w3schools.com/colors/colors_picker.asp)
+    - The w3schools.com **HTML Color Picker** was used to help find colours for the app.
+   
+   ## Deployment
+
+The site was built using Visual Studio Code, added, commited and pushed to GitHub using the terminal. A live version of the site is hosted on GitHub pages.
+
+### How to Run Code Locally
+In order to run a repository locally, the repository must be cloned. To clone the repository
+:
+1. Follow the link to the [interactive front end development project GitHub repository](https://github.com/...........................).
+2. Under the repository name, click "Clone or download".
+3. In the Clone with HTTPs section, copy the clone URL for the repository. 
+4. In your preferred IDE, open the terminal.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type ```git clone```, and then paste the URL you copied in Step 3.
+```console
+git clone https://github.com/USERNAME/REPOSITORY
+```
+7. Press Enter. Your local clone will be created.
+
+Further reading and troubleshooting on how to clone a repository from GitHub may be found [here](https://help.github.com/en/articles/cloning-a-repository).
+
+### Testing
+-## Automated Testing
+
+### Validation services
+The following validation services and linter were used to check the validity of the website code.
+- [W3C Markup Validation]( https://validator.w3.org/) was used to validate HTML.
+- [W3C CSS validation](https://jigsaw.w3.org/css-validator/) was used to validate CSS.
+- [JSHint](https://jshint.com/) was used to validate JavaScript.
+
+## Manual testing
+Below is a detailed account of all the manual testing that has been done to confirm all areas of the site work as expected. 
+
+### Testing undertaken on desktop and laptop
+
+All steps on desktop were repeated in browsers: Firefox, Chrome and Internet Explorer and on two different desktop screen sizes.
+
+1. Responsiveness
+    - The results table sits alongside the map on larger devices as PC and laptop. 
+
+### Testing undertaken on tablet and phone devices
+All steps below were repeated to test mobile specific elements on the developers 2 Samsung phones and tablet. 
+And also in the Chrome Developer Tools device simulators on all options and orientations.
+
+1. Responsiveness
+    - The results table is hidden and appears directly under the map only when the user selects the visit, stay or dine buttons.
+
+This site was tested across multiple browsers (Chrome, Safari, Internet Explorer, FireFox) in Google Dev tools(Galaxy S5, Pixel 2/Pixel 2 XL, iphone 5/SE/6/7/8 Plus, X, ipad and ipad Pro) and on multiple devices.
+
+## Further Testing
+
+Family and friends were asked to try the app on their devices. This insight was invaluable for improving site usability. 
+
+### Content 
+
+- All Content was written by me.
 
 
-## Testing
-* **HTML** The website has passed 3w.org markup validation.
-* **JavaScript** Chrome developer tools have shown no errors.
+### Media
 
-screen.
-* **Charts** All charts respond to clicks and affects each other as expected. However on mobile screens the pie chart overlaps with the legend indicating days. This bug will be fixed in the next version release:).
+All media was obtained through Unsplash [unsplash.com](https://unsplash.com/photos/_SFJhRPzJHs)
 
-## Responsiveness
-Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
-### Browsers used:
-* Chrome Version 67.0.3396.62
-* Cromium Version 76.0.3809.87
-* Opera 62
-* Firefox 68
-* Microsoft Edge 42
-### Mobile devices used:
-* iPhone 5 (Safari, Chrome)
-* iPad (Safari, Crome)
-* Nokia Lumia 830 (Internet Exploler, Chrome)
-* Nokia 6.1 (Chrome)
-* Samsung Galaxy Note 8 (Chrome)
+### Acknowledgements
 
-## Wireframes 
+Thank you to friends and family for testing the app and for the guidance provided by Slack. 
 
-
- ## Deployment
-
-
-#### Deployment procedure
- From the repository:
-1. Go to “Settings”
-2. Scroll down to the “Github Pages” section
-3. Choose the source form the drop down menu (Master Branch in this case).
