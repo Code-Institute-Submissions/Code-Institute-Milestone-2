@@ -39,50 +39,40 @@ The aim of this project was to use JavaScript to make a site that a user could i
 The game starts with 100 dollars that the user has to bet with. The user has a choice of three different values in which they can bet; 1, 5, or 10 dollars. The higher the amount the user bets, the higher the reward if the user wins. A win is accomplished by matching images on the spinning reels.
 
 ### Design Choices
-The design idea was to keep th.........................................
+I'm a big fan of lego so I chose lego minifigures as the slot machine pictures.
+........................................................................
 
 
-**icons**
-- I made use of the large array of icons that font-awesome has to provide its a simple way of creating an effect to show what the site has to offer.
-- i made use of the, Fork, Wine glass, Ship, Swimming pool & umbrella icons which i though was an effective way to show users that our site offers the relevent services.
+**buttons**
+The game contains three simple buttons, each contain a value which the user can use to bet a set amount of money. ($1, $5, $10). I used CSS to add a box shadow to each button to give it a 3D type look that would reduce when clicked. This gave the impression that the button was after being pressed by the user.
 
 **colors**
 - Throughout the majority of my projec......................................
 
 **styling**
-- I opted for a basic navbar with three links to ensure the user does not get lost with too many options to venture off from.
-- The background Image is of an aerial view of a city night sky with an Opaque overlay to reduce the intensity of the sharp city lights, I felt that it gives off a feeling or relaxtaion and calmness to the user when landing upon the page.
-- I have made use of the boostrap grid system to create a less complex approach to relaying my content with in the site.
+...................................................................................................................................................................
 
-**logo**
-- I once again obtained the logo as a font-awesome icon to ensure simplicity.
-- I chose an aeroplane as i felt it suited the needs of a travel app within the right context.
 
 ## Features
 ### Existing Features
--The app uses the Google Maps and Google Places API to provide search results about accommodation, places of interest and places to eat. Each individual result may be added to a list below the map so user's can keep track of the places they wish to visit, stay or dine.
-
+.....................................................................................................................................................................................................................
 ### Features left to implement 
--In the future, I would like users to be able to save the pdf file and share it through social media to enable friends and family to have a look at the itinerary for future purposes. 
+-In the future, I would like to be able to log the highest winnings and maybe a google maps API tp display the country in which the top winners are located
 
 ## Technologies Used
 
 - This project uses HTML, CSS and JavaScript programming languages.
 - [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation.
+    - The project uses **JQuery** to simplify DOM manipulation. JQuery was used to quick alter the Y position of the reel pictures to give the impresson of spinning reels.
 
 - [Bootstrap](https://www.bootstrapcdn.com/)
-    - The project uses **Bootstrap** to simplify the structure of the website and make the website responsive easily.
-    - The project also uses Bootstrap to provide icons from [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)
+    - The project uses **Bootstrap** to simplify the structure of the website and make the website responsive easily to different size screens.
+    
+
 - [GitHub](https://github.com/)
     - This project uses **GitHub** to store and share all project code remotely. 
 
-- [Google Fonts](https://fonts.google.com/)
-    - The project uses **Google fonts** to style the website fonts.
 
-- [HTML Color Picker](https://www.w3schools.com/colors/colors_picker.asp)
-    - The w3schools.com **HTML Color Picker** was used to help find colours for the app.
-   
    ## Deployment
 
 The site was built using Visual Studio Code, added, commited and pushed to GitHub using the terminal. A live version of the site is hosted on GitHub pages.
