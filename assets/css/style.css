@@ -224,4 +224,28 @@ button:focus { outline-style: none; }
 }
 
 
+/*------------------------------Media Query--------*/
+
+/*active when screen size smaller than size shown*/
+@media(max-width: 575px){ 
+
+    .top-container{
+
+    }
+
+    .main-container-holder{
+        margin: 0;
+      
+    }
+
+    #left-of-main #right-of-main{
+        padding: 0;
+        width: 0;
+        display: none;
+        max-width: 0;
+    }
+
+}
+
+
 
