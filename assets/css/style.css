@@ -230,20 +230,38 @@ button:focus { outline-style: none; }
 @media(max-width: 575px){ 
 
     .top-container{
-
+        width: 100%;
     }
 
     .main-container-holder{
+        width: 100%;
+        padding: 0;
         margin: 0;
+    }
+
+    
+    #right-of-main #left-of-main{
+        padding: 0;
+        display: none;
+        margin: 0;
+    }
+
+    #left-of-main{
+        padding-left: 0;
+    }
+
+    .sideLights{
+        display: none;
+    }
+
+    #center-of-main{
+
+    }
+
+    #reels-holder{
       
     }
 
-    #left-of-main #right-of-main{
-        padding: 0;
-        width: 0;
-        display: none;
-        max-width: 0;
-    }
 
 }
 
