@@ -62,16 +62,17 @@ button:focus { outline-style: none; }
 
 #center-of-main{
     background-image: url(../images/mainBG.png); 
-    max-height: 500px;
+    background-size: 100%;
+    max-height: 540px;
     border-radius: 10px;
     margin: auto;
-    max-width: 800px;
+    width: 800px;
     text-align: center;
 }
 
 #reels-holder{
     
-    max-width: 780px;
+    width: 600px;
     position: relative;
     display: flex;
     margin-left: auto;
