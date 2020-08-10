@@ -285,9 +285,61 @@ button:focus { outline-style: none; }
     }
 
 
-@media(max-width: 500px){
+@media(max-width: 400px){
+    
+    #seperator{
+        
+    }
 
-} 
+    .reel-holder{
+
+    }
+
+    #reels-holder{
+        width: 100%;
+    }
+
+    .positioner{
+        width: 105px;
+        height: 140px;
+    }
+
+    .random-reel{
+        padding-top: 5px;
+        width: 87px;
+        height: 100px;
+    }
+
+    #btn-spinreel{
+        margin: auto 15px;
+        width: 100%;
+
+    } 
+
+    #btn-spinreel button{
+        font-size: 1.8rem;
+    }
+
+    #seperator{
+        margin: 0;
+        margin-right: 18px;
+        margin-left: auto; 
+        padding: 0;
+    }
+
+    .info-section{
+        margin: auto 25px;
+        width: 100%;
+    }
+
+    .score{
+        padding: 0;
+    }
+
+    .total-won{
+        padding: 0;
+        padding-left: 10px;
+    }
 
 
 }
