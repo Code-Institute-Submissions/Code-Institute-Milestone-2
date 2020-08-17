@@ -6,6 +6,7 @@ $(document).ready(function(){
     var amountWon = 0;
     var betAmount = 0;
     var winnerTimeout;
+    var btnSelected;
     var btn1;
     var btn5;
     var btn10;
@@ -73,6 +74,25 @@ $(document).ready(function(){
     
 
     function btnClicked(btn){   //sending OBJECT values 
+
+
+        //multiple lines of jQuery required due to bug when all buttons
+        //are rapidly pressed causing values to differ 
+        $(btnSelected).prop('disabled', true);
+            setTimeout(function() {
+        $(btnSelected).prop('disabled', false);
+            }, 2000);
+        $('#spinBtn5').prop('disabled', true);
+            setTimeout(function() {
+        $('#spinBtn5').prop('disabled', false);
+            }, 2000);
+        $('#spinBtn10').prop('disabled', true);
+            setTimeout(function() {
+        $('#spinBtn10').prop('disabled', false);
+            }, 2000);
+
+        console.log("btnCLICKED");
+
         if (btn == bets.bet1){
             btn1 = true;
         }
