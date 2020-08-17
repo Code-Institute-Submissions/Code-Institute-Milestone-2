@@ -78,9 +78,9 @@ $(document).ready(function(){
 
         //multiple lines of jQuery required due to bug when all buttons
         //are rapidly pressed causing values to differ 
-        $(btnSelected).prop('disabled', true);
+        $('#spinBtn1').prop('disabled', true);
             setTimeout(function() {
-        $(btnSelected).prop('disabled', false);
+        $('#spinBtn1').prop('disabled', false);
             }, 2000);
         $('#spinBtn5').prop('disabled', true);
             setTimeout(function() {
