@@ -2,6 +2,8 @@
 The aim of this project was to create a basic slot machine type game that a user could interact with by betting money and spinning the reels to try and win.
 The game consists of 4 reels with various images of lego minifigures that are shuffled in a random order each time the reels are spun.
 
+The game starts with 100 credits and three amounts can be bet (1, 5 ,10) using three buttons.
+
 ## Table of Contents
 1. [**UX**](#ux)
     - [**Project Goals**](#project-goals)
@@ -57,15 +59,10 @@ The game contains three simple buttons, each contain a value which the user can 
 
 The colours used are all dark with bright yellow lines around objects to give the impression of a neon type glow. Feathered yellow lines were drawn in photoshop and used as some of he div backgounds to give a neon type border around the game. 
 
-**Styling**
-...................................................................................................................................................................
 
 
-## Features
-### Existing Features
-.....................................................................................................................................................................................................................
-### Features left to implement 
-In the future, I would like to be able to log the highest winnings and maybe a google maps API tp display the country in which the top winners are located
+## Features left to implement 
+In the future, I would like to be able to log the highest winnings and maybe a google maps API tp display the country in which the top winners are located.
 
 ## Technologies Used
 
@@ -134,12 +131,12 @@ Family and friends were asked to try the app on their devices. This insight was 
 
 ### Content 
 
-- All Content was written by me.
+- All Content and Code was written by me.
 
 
 ### Media
 
-The casino background image media was obtained through Unsplash [unsplash.com](https://unsplash.com/photos/_SFJhRPzJHs)
+The casino background image media was obtained through Unsplash [unsplash.com](https://unsplash.com/)
 
 ### Acknowledgements
 

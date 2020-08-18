@@ -1,261 +1,247 @@
 $(document).ready(function(){
 
     var cash = 100;
-    var win;
     var totalWon = 0;
     var amountWon = 0;
-    var betAmount = 0;
     var winnerTimeout;
     var btn1;
     var btn5;
     var btn10;
     var lightCountOn = 0; //flash side lights on win
 
+//---------------------------------------------------------------new code
+
+
+    const bets = {  //sent to functions within jQuery when btn clicked
+        bet1: {
+            amount: 1
+        },
+        bet5: {
+            amount: 5
+        },
+        bet10: {
+            amount: 10
+        }
+    };
+
+    const matches = {
+        match2: {
+            bton1: 4,
+            bton5: 10,
+            bton10: 22
+        },
+        match3: {
+            bton1: 8,
+            bton5: 20,
+            bton10: 40
+        },
+        match4: {
+            bton1: cash*3,
+            bton5: cash*5,
+            bton10: cash*8
+        }
+    };
+
+    const spin_reels = ["#reels-container1","#reels-container2",
+                        "#reels-container3","#reels-container4"];
+
+    const reels_to_check = ["chk_one","chk_two","chk_three","chk_four"];
+
+    //id of the divs holding the imgs
+    const reel_container_id = ["reels-container1","reels-container2",                                       "reels-container3","reels-container4"];
+
+    //variables with .jpg tag removed
+    const reel_remove_tag = ["Rchk_one","Rchk_two","Rchk_three","Rchk_four"];
+
+
     $("#spinBtn1").click(function() {
-        cash -= 1;
-        betAmount = 1;
-        document.getElementById("credits").innerHTML = cash;
-        btn1 = true;
-        runGame();
+        btnClicked(bets.bet1)
     });
 
     $("#spinBtn5").click(function() {
-        cash -= 5;
-        betAmount = 5;
-        document.getElementById("credits").innerHTML = cash;
-        btn5 = true;
-        runGame();
+        btnClicked(bets.bet5)
     });
 
     $("#spinBtn10").click(function() {
-        cash -= 10;
-        betAmount = 10;
-        document.getElementById("credits").innerHTML = cash;
-        btn10 = true;
-        runGame();
+        btnClicked(bets.bet10)
     });
     
 
+    function btnClicked(btn){   //sending OBJECT values 
+
+
+        //multiple lines of jQuery required due to bug when all buttons
+        //are rapidly pressed causing values to differ 
+        //This disables the button while the spin is occuring
+        $('#spinBtn1').prop('disabled', true);
+            setTimeout(function() {
+        $('#spinBtn1').prop('disabled', false);
+            }, 2000);
+        $('#spinBtn5').prop('disabled', true);
+            setTimeout(function() {
+        $('#spinBtn5').prop('disabled', false);
+            }, 2000);
+        $('#spinBtn10').prop('disabled', true);
+            setTimeout(function() {
+        $('#spinBtn10').prop('disabled', false);
+            }, 2000);
+
+        if (btn == bets.bet1){
+            btn1 = true;
+        }
+        if (btn == bets.bet5){
+            btn5 = true;
+        }
+        if (btn == bets.bet10){
+            btn10 = true;
+        }
+        cash -= btn.amount;
+        document.getElementById("credits").innerHTML = cash;
+        runGame();
+    }
+
+
     function runGame() {
+        if (cash <= 0){
+            cash = 0;
+            $("#credits").html(cash);
+            $("#seperator").html("GAME OVER");
+            $(".betBtn").prop('disabled', true); 
+        }
         lightCountOn = 0;
 
         //clear result box
         document.getElementById("seperator").innerHTML = ""; 
 
+        //jQuery used to quickly move position of images to create spin effect
+        for (i=0 ; i < spin_reels.length; i++) {
+            $(spin_reels[i]).animate({marginTop: "-=1000px"}, 200);
+            $(spin_reels[i]).animate({marginTop: "0"}, 200);
+            $(spin_reels[i]).animate({marginTop: "-=10px"}, 200);
+            $(spin_reels[i]).animate({marginTop: "+=10px"}, 200);
+            $(spin_reels[i]).animate({marginTop: "0px"}, 200);
+            
+            var alteredSpinStr =  spin_reels[i] + " > div";
+                        
+            var imgsA = $(alteredSpinStr).remove().toArray();
+            
+            //algorthim to shuffle order of images
+            for (var k = imgsA.length - 1; k >= 1; k--) {
+                var j = Math.floor(Math.random() * (k+1));
+                var imgsBk = imgsA[k];
+                var imgsBj = imgsA[j];
+                imgsA[k] = imgsBj;
+                imgsA[j] = imgsBk;
+            } 
 
-        /*first reel*/
-        $("#reels-container1").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container1").animate({marginTop: "0"}, 200);
-        $("#reels-container1").animate({marginTop: "-=10px"}, 200);
-        $("#reels-container1").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container1").animate({marginTop: "0px"}, 200);
+            $(spin_reels[i]).append(imgsA);
 
-        var imgsA = $("#reels-container1 > div").remove().toArray();
-        for (var i = imgsA.length - 1; i >= 1; i--) {
-            var j = Math.floor(Math.random() * (i+1));
-            var imgsBi = imgsA[i];
-            var imgsBj = imgsA[j];
-            imgsA[i] = imgsBj;
-            imgsA[j] = imgsBi;
         }
-
-        var reel1_spinning = true;
-        $("#reels-container1").append(imgsA);
-        var reels1_div = document.getElementById("reels-container1").firstElementChild.innerHTML.split("/")[2];
-        var r1_remove = reels1_div.replace('.jpg">',"");
+        //loop to remove .jpg from final images to check for match
+        for (var c=0; c<reels_to_check.length; c++){
+            reels_to_check[c] = document.getElementById(reel_container_id[c]).firstElementChild.innerHTML.split("/")[2];
+            reel_remove_tag[c] = reels_to_check[c].replace('.jpg">',"");
+        }
         
 
+        //check for matching images
+        find_match(reel_remove_tag);
+        function find_match(reel_remove_tag){
+            var object = {};
 
+            reel_remove_tag.forEach(function (item){
+                if(!object[item])
+                    object[item] = 0;
+                    object[item] += 1;
+            })
 
-        /*second reel*/
-        $("#reels-container2").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container2").animate({marginTop: "0"}, 200);
-        $("#reels-container2").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container2").animate({marginTop: "0"}, 200);
-        $("#reels-container2").animate({marginTop: "-=10px"}, 200);
-        $("#reels-container2").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container2").animate({marginTop: "0px"}, 200);
+            for (var prop in object) {
 
-        var imgsA = $("#reels-container2 > div").remove().toArray();
-        for (var i = imgsA.length - 1; i >= 1; i--) {
-            var j = Math.floor(Math.random() * (i+1));
-            var imgsBi = imgsA[i];
-            var imgsBj = imgsA[j];
-            imgsA[i] = imgsBj;
-            imgsA[j] = imgsBi;
+                //if 2 matching images found
+                if(object[prop] == 2) {
+
+                    winnerTimeout = setTimeout(function(){
+                        $("#seperator").html("Double Match!!");
+                        $("#credits").html(cash);
+                        $("#totalWonCredit").html(totalWon);
+                        lightLoopOn(); //flash lights on win
+                    } , 500);
+
+                    if (btn1 == true){
+                        winnerMatch(matches.match2.bton1)
+                    }   
+                    if (btn5 == true){
+                        winnerMatch(matches.match2.bton5)
+                    }
+                    if (btn10 == true){
+                        winnerMatch(matches.match2.bton10)
+                    }
+
+                }
+
+                //if 3 matching images found
+                if(object[prop] == 3) {
+
+                    winnerTimeout = setTimeout(function(){
+                        $("#seperator").html("TRIPLE Match!!");
+                        $("#credits").html(cash);
+                        $("#totalWonCredit").html(totalWon);
+                        lightLoopOn(); //flash lights on win
+                    } , 500);
+
+                    if (btn1 == true){
+                        winnerMatch(matches.match3.bton1)
+                    }   
+                    if (btn5 == true){
+                        winnerMatch(matches.match3.bton5)
+                    }
+                    if (btn10 == true){
+                        winnerMatch(matches.match3.bton10)
+                    }                   
+
+                }
+
+                //if 4 matching images found
+                if(object[prop] == 4) {
+
+                    winnerTimeout = setTimeout(function(){
+                        $("#seperator").html("**ULTIMATE JACKPOT!!**");
+                        $("#credits").html(cash);
+                        $("#totalWonCredit").html(totalWon);
+                        lightLoopOn(); //flash lights on win
+                    } , 500);
+
+                    if (btn1 == true){
+                        winnerMatch(matches.match4.bton1)
+                    }   
+                    if (btn5 == true){
+                        winnerMatch(matches.match4.bton5)
+                    }
+                    if (btn10 == true){
+                        winnerMatch(matches.match4.bton10)
+                    }   
+
+                }
+            }
+
         }
-
-        $("#reels-container2").append(imgsA);
-        var reels2_div = document.getElementById("reels-container2").firstElementChild.innerHTML.split("/")[2];
-        var r2_remove = reels2_div.replace('.jpg">',"");
-
-
-
-        /*third reel*/
-        $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container3").animate({marginTop: "0"}, 200);
-        $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container3").animate({marginTop: "0"}, 200);
-        $("#reels-container3").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container3").animate({marginTop: "0"}, 200);
-        $("#reels-container3").animate({marginTop: "-=10px"}, 200);
-        $("#reels-container3").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container3").animate({marginTop: "0px"}, 200);
-
-        var imgsA = $("#reels-container3 > div").remove().toArray();
-        for (var i = imgsA.length - 1; i >= 1; i--) {
-            var j = Math.floor(Math.random() * (i+1));
-            var imgsBi = imgsA[i];
-            var imgsBj = imgsA[j];
-            imgsA[i] = imgsBj;
-            imgsA[j] = imgsBi;
-        }
-        $("#reels-container3").append(imgsA);
-        var reels3_div = document.getElementById("reels-container3").firstElementChild.innerHTML.split("/")[2];
-        var r3_remove = reels3_div.replace('.jpg">',"");
-
-
-
-        /*fourth reel*/
-        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container4").animate({marginTop: "0"}, 200);
-        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container4").animate({marginTop: "0"}, 200);
-        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container4").animate({marginTop: "0"}, 200);
-        $("#reels-container4").animate({marginTop: "-=1000px"}, 200);
-        $("#reels-container4").animate({marginTop: "0"}, 200);
-        $("#reels-container4").animate({marginTop: "-=10px"}, 200);
-        $("#reels-container4").animate({marginTop: "+=10px"}, 200);
-        $("#reels-container4").animate({marginTop: "0px"}, 200,);
-
-        var imgsA = $("#reels-container4 > div").remove().toArray();
-        for (var i = imgsA.length - 1; i >= 1; i--) {
-            var j = Math.floor(Math.random() * (i+1));
-            var imgsBi = imgsA[i];
-            var imgsBj = imgsA[j];
-            imgsA[i] = imgsBj;
-            imgsA[j] = imgsBi;
-        }
-        $("#reels-container4").append(imgsA);
-        var reels4_div = document.getElementById("reels-container4").firstElementChild.innerHTML.split("/")[2];
-        var r4_remove = reels4_div.replace('.jpg">',"");
-
-
-        //send strings to function with ".jpg" removed
-        checkReels(r1_remove, r2_remove, r3_remove, r4_remove);
-        
-
-
 
     }; //end of runGame Function
 
 
-    //match 2 icons function
-    function winner2match(){
-        win = true;
-        if (btn1 == true){
-            totalWon += 3;
-            amountWon = 3;
-            cash += amountWon;
-            amountWon = 0;
-            btn1 = false;
-        }
-        if (btn5 == true){
-            totalWon += 8;
-            amountWon = 8;
-            cash += amountWon;
-            amountWon = 0;
-            btn5 = false;
-        }
-        if (btn10 == true){
-            totalWon += 15;
-            amountWon = 15;
-            cash += amountWon;
-            amountWon = 0;
-            btn10 = false;
-        }
+//------------------------------------------------new winner2match
 
-        //delay inner html
-        winnerTimeout = setTimeout(function(){
-           $("#seperator").html("Double Match!!");
-           $("#credits").html(cash);
-           $("#totalWonCredit").html(totalWon);
-
-            lightLoopOn(); //flash lights on win
-        } , 2000);
+    function winnerMatch(btnWin){
+         console.log(btnWin);
+         totalWon += btnWin;
+         cash += btnWin;
+         btnWin = 0;
+         btn1 = false;
+         btn5 = false;
+         btn10 = false;
     }
 
-   
-   //match 3 icons function
-    function winner3match(){
-        win = true;
-        if (btn1 == true){
-            totalWon += 8;
-            amountWon = 8;
-            cash += amountWon;
-            amountWon = 0;
-            btn1 = false;
-        }
-        if (btn5 == true){
-            totalWon += 15;
-            amountWon = 15;
-            cash += amountWon;
-            amountWon = 0;
-            btn5 = false;
-        }
-        if (btn10 == true){
-            totalWon += 35;
-            amountWon = 35;
-            cash += amountWon;
-            amountWon = 0;
-            btn10 = false;
-        }
-
-        //delay inner html 
-        winnerTimeout = setTimeout(function(){
-           $("#seperator").html("TRIPLE Match!!");
-           $("#credits").html(cash);
-           $("#totalWonCredit").html(totalWon);
-            lightLoopOn(); //flash lights on win
-        } , 2000);
-   }
-
-    //match all icons function
-    function winnerAllmatch(){
-        win = true;
-        if (btn1 == true){
-            amountWon = cash * 3;
-            totalWon += amountWon;
-            cash += amountWon;
-            amountWon = 0;
-            btn1 = false;
-        }
-        if (btn5 == true){
-            amountWon = cash * 5;
-            totalWon += amountWon;
-            cash += amountWon;
-            amountWon = 0;
-            btn5 = false;
-        }
-        if (btn10 == true){
-            amountWon = cash * 8;
-            totalWon += amountWon;
-            cash += amountWon;
-            amountWon = 0;
-            btn10 = false;
-        }
-
-        //delay inner html
-        winnerTimeout = setTimeout(function(){
-           $("#seperator").html("**ULTIMATE JACKPOT!!**");
-           $("#credits").html(cash);
-            $("#totalWonCredit").html(totalWon);
-            lightLoopOn(); //flash lights on win
-        } , 2000);
-   }
-        
-   //  function to flash side divs upon a win
+    //  functions to flash side divs upon a win
     function lightLoopOn(){
         setTimeout(function(){
             var lights = document.querySelectorAll('.sideLights');
@@ -277,134 +263,7 @@ $(document).ready(function(){
                 $(lights[i]).removeClass('on');
             }
         }, 150);
-    }
-   
-    //use strings (img names) to check reels for winner
-    function checkReels(reel1_r, reel2_r, reel3_r, reel4_r) {
-        var oneMatch;
-        
-        //----------------------------TWO MATCH ON REELS---------------------
-        //reel 1, two match
-        if (reel1_r == reel2_r && reel1_r !== reel3_r && reel1_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel1_r == reel3_r && reel1_r !== reel2_r && reel1_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel1_r == reel4_r && reel1_r !== reel2_r && reel1_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-
-        //reel 2, two match
-        if (reel2_r == reel1_r && reel2_r !== reel3_r && reel2_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel2_r == reel3_r && reel2_r !== reel1_r && reel1_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel2_r == reel4_r && reel2_r !== reel1_r && reel1_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-
-        //reel 3, two match
-        if (reel3_r == reel1_r && reel3_r !== reel2_r && reel3_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel3_r == reel2_r && reel3_r !== reel1_r && reel3_r !== reel4_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel3_r == reel4_r && reel3_r !== reel1_r && reel3_r !== reel2_r){
-            oneMatch = true;
-            winner2match();
-        }
-
-        //reel 4, two match
-        if (reel4_r == reel1_r && reel4_r !== reel2_r && reel4_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel4_r == reel2_r && reel4_r !== reel1_r && reel4_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-        if (reel4_r == reel3_r && reel4_r !== reel1_r && reel4_r !== reel3_r){
-            oneMatch = true;
-            winner2match();
-        }
-
-
-        //----------------------------THREE MATCH ON REELS---------------------
-        //reel 1, three match
-        if (reel1_r == reel2_r && reel1_r == reel3_r && reel1_r !== reel4_r){
-            twoMatch = true;
-            winner3match();
-        }
-        if (reel1_r == reel2_r && reel1_r == reel4_r && reel1_r !== reel3_r){
-            oneMatch = true;
-            winner3match();
-        }
-        if (reel1_r == reel3_r && reel1_r == reel4_r && reel1_r !== reel2_r){
-            oneMatch = true;
-            winner3match();
-        }
-
-        //reel 2, three match
-        if (reel2_r == reel1_r && reel2_r == reel3_r && reel2_r !== reel4_r){
-            twoMatch = true;
-            winner3match();
-        }
-        if (reel2_r == reel1_r && reel2_r == reel4_r && reel2_r !== reel3_r){
-            oneMatch = true;
-            winner3match();
-        }
-        if (reel2_r == reel3_r && reel2_r == reel4_r && reel2_r !== reel1_r){
-            oneMatch = true;
-            winner3match();
-        }
-
-        //reel 3, three match
-        if (reel3_r == reel1_r && reel3_r == reel2_r && reel3_r !== reel4_r){
-            twoMatch = true;
-            winner3match();
-        }
-        if (reel3_r == reel1_r && reel3_r == reel4_r && reel3_r !== reel2_r){
-            oneMatch = true;
-            winner3match();
-        }
-        if (reel3_r == reel2_r && reel3_r == reel4_r && reel3_r !== reel1_r){
-            oneMatch = true;
-            winner3match();
-        }
-
-        //reel 4, three match
-        if (reel4_r == reel1_r && reel4_r == reel2_r && reel4_r !== reel3_r){
-            twoMatch = true;
-            winner3match();
-        }
-        if (reel4_r == reel1_r && reel4_r == reel3_r && reel4_r !== reel2_r){
-            oneMatch = true;
-            winner3match();
-        }
-        if (reel4_r == reel2_r && reel4_r == reel3_r && reel4_r !== reel1_r){
-            oneMatch = true;
-            winner3match();
-        }
-
-        //----------------------------FOUR MATCH ON REELS---------------------
-        if (reel1_r == reel2_r && reel1_r == reel3_r && reel1_r == reel4_r){
-            winnerAllmatch();
-        }
-
-            
-    };// end of checkReels function
+    } // end of flash lights functions
 
 }); //end of document.ready
 
