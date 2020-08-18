@@ -1,3 +1,5 @@
+https://mikevez.github.io/Code-Institute-Milestone-2/
+
 # :slot_machine: JavaScript Slot Machine  :slot_machine:
 The aim of this project was to create a basic slot machine type game that a user could interact with by betting money and spinning the reels to try and win.
 The game consists of 4 reels with various images of lego minifigures that are shuffled in a random order each time the reels are spun.
