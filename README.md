@@ -1,4 +1,4 @@
-# :slot_machine: JavaScript slot machine  :slot_machine:
+# :slot_machine: JavaScript Slot Machine  :slot_machine:
 The aim of this project was to create a basic slot machine type game that a user could interact with by betting money and spinning the reels to try and win.
 The game consists of 4 reels with various images of lego minifigures that are shuffled in a random order each time the reels are spun.
 
@@ -39,18 +39,25 @@ The aim of this project was to use JavaScript to make a site that a user could i
 The game starts with 100 dollars that the user has to bet with. The user has a choice of three different values in which they can bet; 1, 5, or 10 dollars. The higher the amount the user bets, the higher the reward if the user wins. A win is accomplished by matching images on the spinning reels.
 
 ### Design Choices
-I'm a big fan of lego so I chose lego minifigures as the slot machine pictures rather than the normal fruit type images usually associated with slot machines.
+
+The original design was was done with a basic sketch in photoshop and is shown below depicting a score board and map marking the highest winnings
+
+![website prototype](assets/images/prototype.jpg)
+
+The final build; I'm a big fan of lego so I chose lego minifigures as the slot machine pictures rather than the normal fruit type images usually associated with slot machines. I also decided to have 3 fixed betting amounts displayed on 3 buttons. The final version is displayed below.
+
+![website final design](assets/images/readmeimages/readme_snip.jpg)
 
 
-**buttons**
+**Buttons**
 
 The game contains three simple buttons, each contain a value which the user can use to bet a set amount of money. ($1, $5, $10). I used CSS to add a box shadow to each button to give it a 3D type look that would reduce when clicked. This gave the impression that the button was pressed and would pop back up after being pressed by the user.
 
-**colours**
+**Colours**
 
 The colours used are all dark with bright yellow lines around objects to give the impression of a neon type glow. Feathered yellow lines were drawn in photoshop and used as some of he div backgounds to give a neon type border around the game. 
 
-**styling**
+**Styling**
 ...................................................................................................................................................................
 
 
@@ -95,7 +102,6 @@ git clone https://github.com/USERNAME/REPOSITORY
 Further reading and troubleshooting on how to clone a repository from GitHub may be found [here](https://help.github.com/en/articles/cloning-a-repository).
 
 ### Testing
--## Automated Testing
 
 ### Validation services
 The following validation services and linter were used to check the validity of the website code.

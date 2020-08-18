@@ -1,12 +1,9 @@
 $(document).ready(function(){
 
     var cash = 100;
-    var win;
     var totalWon = 0;
     var amountWon = 0;
-    var betAmount = 0;
     var winnerTimeout;
-    var btnSelected;
     var btn1;
     var btn5;
     var btn10;
@@ -14,9 +11,6 @@ $(document).ready(function(){
 
 //---------------------------------------------------------------new code
 
-    let bton1;
-    let bton5;
-    let bton10;
 
     const bets = {  //sent to functions within jQ when btn clicked
         bet1: {
@@ -154,7 +148,6 @@ $(document).ready(function(){
         find_match(reel_remove_tag);
         function find_match(reel_remove_tag){
             var object = {};
-            var result = [];
 
             reel_remove_tag.forEach(function (item){
                 if(!object[item])
