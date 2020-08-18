@@ -1,4 +1,4 @@
-# Basic JavaScript slot machine
+# :slot_machine: JavaScript slot machine  :slot_machine:
 The aim of this project was to create a basic slot machine type game that a user could interact with by betting money and spinning the reels to try and win.
 The game consists of 4 reels with various images of lego minifigures that are shuffled in a random order each time the reels are spun.
 
@@ -32,22 +32,23 @@ The game consists of 4 reels with various images of lego minifigures that are sh
 
 ### User Goals
 
-The aim of this project was to use JavaScript to make a site that a user could interact with. The final idea was to go with a basic slot machine style game that was easy for the user to use.
+The aim of this project was to use JavaScript to make a site that a user could interact with. The final idea was to go with a basic slot machine style game that was easy for the user to use. The game contains 3 premade amounts that are assigned to buttons to the user to press.
 
 #### User Stories
 
 The game starts with 100 dollars that the user has to bet with. The user has a choice of three different values in which they can bet; 1, 5, or 10 dollars. The higher the amount the user bets, the higher the reward if the user wins. A win is accomplished by matching images on the spinning reels.
 
 ### Design Choices
-I'm a big fan of lego so I chose lego minifigures as the slot machine pictures.
-........................................................................
+I'm a big fan of lego so I chose lego minifigures as the slot machine pictures rather than the normal fruit type images usually associated with slot machines.
 
 
 **buttons**
-The game contains three simple buttons, each contain a value which the user can use to bet a set amount of money. ($1, $5, $10). I used CSS to add a box shadow to each button to give it a 3D type look that would reduce when clicked. This gave the impression that the button was after being pressed by the user.
 
-**colors**
-- Throughout the majority of my projec......................................
+The game contains three simple buttons, each contain a value which the user can use to bet a set amount of money. ($1, $5, $10). I used CSS to add a box shadow to each button to give it a 3D type look that would reduce when clicked. This gave the impression that the button was pressed and would pop back up after being pressed by the user.
+
+**colours**
+
+The colours used are all dark with bright yellow lines around objects to give the impression of a neon type glow. Feathered yellow lines were drawn in photoshop and used as some of he div backgounds to give a neon type border around the game. 
 
 **styling**
 ...................................................................................................................................................................
@@ -57,13 +58,13 @@ The game contains three simple buttons, each contain a value which the user can 
 ### Existing Features
 .....................................................................................................................................................................................................................
 ### Features left to implement 
--In the future, I would like to be able to log the highest winnings and maybe a google maps API tp display the country in which the top winners are located
+In the future, I would like to be able to log the highest winnings and maybe a google maps API tp display the country in which the top winners are located
 
 ## Technologies Used
 
 - This project uses HTML, CSS and JavaScript programming languages.
 - [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation. JQuery was used to quick alter the Y position of the reel pictures to give the impresson of spinning reels.
+    - The project uses **JQuery** to simplify DOM manipulation. JQuery was used to quick alter the Y position of the reel pictures to give the impresson of spinning reels upon clicking one of the buttons.
 
 - [Bootstrap](https://www.bootstrapcdn.com/)
     - The project uses **Bootstrap** to simplify the structure of the website and make the website responsive easily to different size screens.
@@ -75,7 +76,7 @@ The game contains three simple buttons, each contain a value which the user can 
 
    ## Deployment
 
-The site was built using Visual Studio Code, added, commited and pushed to GitHub using the terminal. A live version of the site is hosted on GitHub pages.
+The site was assembled and coded within Google Chrome browser using GitPod and then uploaded to GitHub using GitPod through the command line using 'add, commit, push' commands.
 
 ### How to Run Code Locally
 In order to run a repository locally, the repository must be cloned. To clone the repository
@@ -132,9 +133,10 @@ Family and friends were asked to try the app on their devices. This insight was 
 
 ### Media
 
-All media was obtained through Unsplash [unsplash.com](https://unsplash.com/photos/_SFJhRPzJHs)
+The casino background image media was obtained through Unsplash [unsplash.com](https://unsplash.com/photos/_SFJhRPzJHs)
 
 ### Acknowledgements
 
-Thank you to friends and family for testing the app and for the guidance provided by Slack. 
+Thank you for the guidance provided by Slack and my mentor 
+Maranatha A. Ilesanmi for all his help!
 
