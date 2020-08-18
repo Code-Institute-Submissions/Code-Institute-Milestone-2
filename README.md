@@ -42,11 +42,11 @@ The game starts with 100 dollars that the user has to bet with. The user has a c
 
 The original design was was done with a basic sketch in photoshop and is shown below depicting a score board and map marking the highest winnings
 
-![website prototype](assets/images/prototype.jpg)
+![website prototype](assets/images/prototype.JPG)
 
 The final build; I'm a big fan of lego so I chose lego minifigures as the slot machine pictures rather than the normal fruit type images usually associated with slot machines. I also decided to have 3 fixed betting amounts displayed on 3 buttons. The final version is displayed below.
 
-![website final design](assets/images/readmeimages/readme_snip.jpg)
+![website final design](assets/images/readme_snip.JPG)
 
 
 **Buttons**
